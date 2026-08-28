@@ -1,0 +1,262 @@
+{
+  "_comment": "Single source of truth for human/table output columns per AskNews response shape. Each shape is matched by `when` (OR of conditions: arrayKey === unwrapped key, or records.some/every contain the named fields) and projects `columns` (label + ordered field fallbacks). Order matters: the first matching shape wins, so list the most specific shapes first. `max: null` disables truncation (complete wrapped content); omit `max` for the default. `format: \"date\"` renders epoch/ISO values as UTC. Edit this file to fix or add an endpoint; the renderer in output.ts is a thin consumer.",
+  "arrayKeys": [
+    "articles",
+    "as_dicts",
+    "stories",
+    "models",
+    "alerts",
+    "items",
+    "results",
+    "documents",
+    "data"
+  ],
+  "defaults": { "width": 18, "max": 100 },
+  "table": [
+    {
+      "name": "reddit-thread",
+      "when": [{ "some": ["subreddit_name"] }],
+      "columns": [
+        { "label": "Title", "fields": ["title", "topic"], "width": 36 },
+        {
+          "label": "Summary",
+          "fields": ["summary", "key_takeaways", "body"],
+          "width": 50,
+          "max": null
+        },
+        { "label": "Community", "fields": ["subreddit_name"], "width": 18 },
+        { "label": "Upvotes", "fields": ["upvotes"], "width": 9 },
+        { "label": "Date", "fields": ["date"], "width": 18, "format": "date" },
+        { "label": "URL", "fields": ["url"], "width": 24, "format": "url" }
+      ]
+    },
+    {
+      "name": "web-search",
+      "when": [{ "some": ["raw_text"] }],
+      "columns": [
+        { "label": "Title", "fields": ["title"], "width": 32 },
+        { "label": "Published", "fields": ["published"], "width": 18, "format": "date" },
+        { "label": "Key Points", "fields": ["key_points"], "width": 40, "max": null },
+        { "label": "Raw Text", "fields": ["raw_text"], "width": 40, "max": 2000 },
+        { "label": "URL", "fields": ["url"], "width": 24, "format": "url" }
+      ]
+    },
+    {
+      "name": "wiki-document",
+      "when": [{ "arrayKey": "documents" }, { "some": ["content", "categories"] }],
+      "columns": [
+        { "label": "Title", "fields": ["title"], "width": 32 },
+        { "label": "Content", "fields": ["content"], "width": 58, "max": null },
+        { "label": "Categories", "fields": ["categories"], "width": 20 },
+        { "label": "Date", "fields": ["timestamp"], "width": 18, "format": "date" },
+        { "label": "URL", "fields": ["url"], "width": 24, "format": "url" }
+      ]
+    },
+    {
+      "name": "article",
+      "when": [{ "arrayKey": "articles" }, { "some": ["article_id"] }],
+      "columns": [
+        { "label": "Title", "fields": ["title", "eng_title", "headline"], "width": 36 },
+        { "label": "Summary", "fields": ["summary", "key_points"], "width": 50, "max": null },
+        { "label": "Source", "fields": ["source_id", "source_name", "domain_url"], "width": 16 },
+        {
+          "label": "Date",
+          "fields": ["pub_date", "published_at", "crawl_date"],
+          "width": 18,
+          "format": "date"
+        },
+        { "label": "URL", "fields": ["article_url"], "width": 24, "format": "url" }
+      ]
+    },
+    {
+      "name": "story",
+      "when": [{ "arrayKey": "stories" }, { "some": ["current_update_uuid"] }],
+      "columns": [
+        {
+          "label": "Title",
+          "fields": ["updates.0.headline", "headline", "title", "story_title"],
+          "width": 36
+        },
+        {
+          "label": "Summary",
+          "fields": ["updates.0.story", "story", "updates.0.key_takeaways"],
+          "width": 58,
+          "max": null
+        },
+        {
+          "label": "Date",
+          "fields": ["updates.0.story_update_ts", "story_update_ts", "updated_ts"],
+          "width": 18,
+          "format": "date"
+        },
+        { "label": "Category", "fields": ["updates.0.categories", "categories"], "width": 20 }
+      ]
+    },
+    {
+      "name": "deepnews-model",
+      "when": [{ "arrayKey": "models" }, { "every": ["model", "type"] }],
+      "columns": [
+        { "label": "Model", "fields": ["model"], "width": 32 },
+        { "label": "Tier", "fields": ["type"], "width": 16 }
+      ]
+    },
+    {
+      "name": "newsletter",
+      "when": [{ "some": ["name", "cron", "sender"] }],
+      "columns": [
+        { "label": "Title", "fields": ["name", "subject"], "width": 30 },
+        { "label": "Summary", "fields": ["query", "subject"], "width": 50, "max": null },
+        { "label": "Schedule", "fields": ["cron"], "width": 16 },
+        { "label": "Sender", "fields": ["sender"], "width": 18 },
+        { "label": "Active", "fields": ["active"], "width": 8 }
+      ]
+    },
+    {
+      "name": "alert",
+      "when": [{ "arrayKey": "alerts" }, { "some": ["cron", "active"] }],
+      "columns": [
+        { "label": "Title", "fields": ["title", "query"], "width": 36 },
+        { "label": "Summary", "fields": ["query"], "width": 50, "max": null },
+        { "label": "Schedule", "fields": ["cron"], "width": 16 },
+        { "label": "Active", "fields": ["active"], "width": 8 },
+        { "label": "Type", "fields": ["alert_type"], "width": 16 }
+      ]
+    },
+    {
+      "name": "deepnews-log",
+      "when": [{ "some": ["reasoning", "created_at"] }],
+      "columns": [
+        { "label": "Date", "fields": ["created_at"], "width": 18, "format": "date" },
+        { "label": "Summary", "fields": ["reasoning", "report"], "width": 58, "max": null },
+        { "label": "Report", "fields": ["report_url"], "width": 30 }
+      ]
+    },
+    {
+      "name": "subscriber",
+      "when": [{ "some": ["email", "unsubscribed"] }],
+      "columns": [
+        { "label": "Name", "fields": ["name", "first_name"], "width": 24 },
+        { "label": "Email", "fields": ["email"], "width": 32 },
+        { "label": "Status", "fields": ["unsubscribed"], "width": 12 },
+        { "label": "Date", "fields": ["created_at"], "width": 18, "format": "date" }
+      ]
+    },
+    {
+      "name": "domain",
+      "when": [{ "some": ["owner", "publisher", "is_tollbit"] }],
+      "columns": [
+        { "label": "Domain", "fields": ["name"], "width": 30 },
+        { "label": "Owner", "fields": ["owner"], "width": 20 },
+        { "label": "Publisher", "fields": ["publisher"], "width": 20 },
+        { "label": "Tollbit", "fields": ["is_tollbit"], "width": 10 },
+        { "label": "Date", "fields": ["updated_at", "created_at"], "width": 18, "format": "date" }
+      ]
+    },
+    {
+      "name": "domain-hits",
+      "when": [{ "every": ["domain", "hit_count"] }],
+      "columns": [
+        { "label": "Domain", "fields": ["domain"], "width": 30 },
+        { "label": "Hits", "fields": ["hit_count"], "width": 12 }
+      ]
+    },
+    {
+      "name": "timeseries-bucket",
+      "when": [{ "every": ["start", "end", "count"] }],
+      "columns": [
+        { "label": "Start", "fields": ["start"], "width": 18 },
+        { "label": "End", "fields": ["end"], "width": 18 },
+        { "label": "Count", "fields": ["count"], "width": 12 }
+      ]
+    },
+    {
+      "name": "source-report",
+      "when": [{ "every": ["bson_date", "n_selected"] }],
+      "columns": [
+        { "label": "Date", "fields": ["bson_date"], "width": 18, "format": "date" },
+        { "label": "Selected", "fields": ["n_selected"], "width": 12 },
+        { "label": "Bucket", "fields": ["n_bucket"], "width": 12 },
+        { "label": "Selected %", "fields": ["selected_pct"], "width": 12 }
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "name": "article",
+      "when": [{ "some": ["article_id"] }],
+      "columns": [
+        { "label": "Title", "fields": ["title", "eng_title"] },
+        { "label": "Summary", "fields": ["summary", "key_points"] },
+        { "label": "Source", "fields": ["source_id", "domain_url"] },
+        { "label": "Date", "fields": ["pub_date", "crawl_date"], "format": "date" },
+        { "label": "Category", "fields": ["classification"] },
+        { "label": "Country", "fields": ["country"] },
+        { "label": "URL", "fields": ["article_url"] },
+        { "label": "ID", "fields": ["article_id"] }
+      ]
+    },
+    {
+      "name": "story",
+      "when": [{ "some": ["current_update_uuid", "updates"] }],
+      "columns": [
+        { "label": "Title", "fields": ["updates.0.headline", "headline"] },
+        { "label": "Summary", "fields": ["updates.0.story", "story", "updates.0.key_takeaways"] },
+        {
+          "label": "Date",
+          "fields": ["updates.0.story_update_ts", "updated_ts"],
+          "format": "date"
+        },
+        { "label": "Category", "fields": ["updates.0.categories", "categories"] },
+        { "label": "Updates", "fields": ["n_updates"] },
+        { "label": "ID", "fields": ["uuid", "story_id"] }
+      ]
+    },
+    {
+      "name": "newsletter",
+      "when": [{ "some": ["cron", "active", "sender"] }],
+      "columns": [
+        { "label": "Title", "fields": ["name", "subject"] },
+        { "label": "Summary", "fields": ["query", "subject"] },
+        { "label": "Schedule", "fields": ["cron"] },
+        { "label": "Sender", "fields": ["sender"] },
+        { "label": "Active", "fields": ["active"] },
+        { "label": "ID", "fields": ["id"] }
+      ]
+    },
+    {
+      "name": "alert",
+      "when": [{ "some": ["cron", "active"] }],
+      "columns": [
+        { "label": "Title", "fields": ["title", "query"] },
+        { "label": "Summary", "fields": ["query"] },
+        { "label": "Schedule", "fields": ["cron"] },
+        { "label": "Active", "fields": ["active"] },
+        { "label": "Type", "fields": ["alert_type"] },
+        { "label": "ID", "fields": ["id", "alert_id"] }
+      ]
+    },
+    {
+      "name": "subscriber",
+      "when": [{ "some": ["email", "unsubscribed"] }],
+      "columns": [
+        { "label": "Name", "fields": ["name", "first_name"] },
+        { "label": "Email", "fields": ["email"] },
+        { "label": "Unsubscribed", "fields": ["unsubscribed"] },
+        { "label": "Date", "fields": ["created_at"], "format": "date" },
+        { "label": "ID", "fields": ["id"] }
+      ]
+    },
+    {
+      "name": "domain",
+      "when": [{ "some": ["owner", "publisher", "is_tollbit"] }],
+      "columns": [
+        { "label": "Domain", "fields": ["name"] },
+        { "label": "Owner", "fields": ["owner"] },
+        { "label": "Publisher", "fields": ["publisher"] },
+        { "label": "Tollbit", "fields": ["is_tollbit"] },
+        { "label": "Date", "fields": ["updated_at", "created_at"] },
+        { "label": "ID", "fields": ["id"] }
+      ]
+    }
+  ]
+}

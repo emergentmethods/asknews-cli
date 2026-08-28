@@ -1,0 +1,159 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PACKAGE="@emergentmethods/asknews-cli"
+DEFAULT_PREFIX="${HOME}/.local"
+VERSION="${ASKNEWS_CLI_VERSION:-latest}"
+PREFIX="${ASKNEWS_CLI_PREFIX:-${DEFAULT_PREFIX}}"
+TARBALL_PATH=""
+EXPECTED_SHA256="${ASKNEWS_CLI_SHA256:-}"
+MODIFY_PATH=1
+INSTALL_AGENT_SKILLS=1
+
+usage() {
+  cat <<'EOF'
+Install the AskNews CLI from the public npm registry.
+
+USAGE
+  curl -fsSL https://docs.asknews.app/cli/install | bash
+  bash install [options]
+
+OPTIONS
+  --version <version>       CLI version to install (default: latest)
+  --prefix <directory>      Installation prefix (default: ~/.local)
+  --tarball <path>          Install a local .tgz instead of the registry
+  --sha256 <checksum>       Require this SHA-256 checksum for --tarball
+  --no-modify-path          Do not update the current shell profile
+  --no-agent-skills         Do not install the embedded AskNews agent skill
+  -h, --help                Show this help
+
+ENVIRONMENT
+  ASKNEWS_CLI_VERSION       Same as --version
+  ASKNEWS_CLI_PREFIX        Same as --prefix
+  ASKNEWS_CLI_SHA256        Same as --sha256
+EOF
+}
+
+die() {
+  printf 'asknews installer: %s\n' "$*" >&2
+  exit 1
+}
+
+require_value() {
+  [[ $# -ge 2 && -n "${2:-}" ]] || die "$1 requires a value"
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --version)
+      require_value "$@"
+      VERSION="$2"
+      shift 2
+      ;;
+    --prefix)
+      require_value "$@"
+      PREFIX="$2"
+      shift 2
+      ;;
+    --tarball)
+      require_value "$@"
+      TARBALL_PATH="$2"
+      shift 2
+      ;;
+    --sha256)
+      require_value "$@"
+      EXPECTED_SHA256="$2"
+      shift 2
+      ;;
+    --no-modify-path)
+      MODIFY_PATH=0
+      shift
+      ;;
+    --no-agent-skills)
+      INSTALL_AGENT_SKILLS=0
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      die "unknown option: $1 (run with --help)"
+      ;;
+  esac
+done
+
+command -v node >/dev/null 2>&1 || die "Node.js 22.15 or newer is required"
+command -v npm >/dev/null 2>&1 || die "npm is required"
+
+node -e '
+  const [major, minor] = process.versions.node.split(".").map(Number);
+  if (major < 22 || (major === 22 && minor < 15)) process.exit(1);
+' || die "Node.js 22.15 or newer is required (found $(node --version))"
+
+if [[ -n "${TARBALL_PATH}" ]]; then
+  [[ -f "${TARBALL_PATH}" ]] || die "tarball not found: ${TARBALL_PATH}"
+  PACKAGE_TARBALL="$(cd "$(dirname "${TARBALL_PATH}")" && pwd)/$(basename "${TARBALL_PATH}")"
+  if [[ -z "${EXPECTED_SHA256}" && -f "${PACKAGE_TARBALL}.sha256" ]]; then
+    EXPECTED_SHA256="$(awk 'NR == 1 { print $1 }' "${PACKAGE_TARBALL}.sha256")"
+  fi
+  if [[ -n "${EXPECTED_SHA256}" ]]; then
+    if command -v sha256sum >/dev/null 2>&1; then
+      ACTUAL_SHA256="$(sha256sum "${PACKAGE_TARBALL}" | awk '{ print $1 }')"
+    elif command -v shasum >/dev/null 2>&1; then
+      ACTUAL_SHA256="$(shasum -a 256 "${PACKAGE_TARBALL}" | awk '{ print $1 }')"
+    else
+      die "SHA-256 verification requires sha256sum or shasum"
+    fi
+    [[ "${ACTUAL_SHA256}" == "${EXPECTED_SHA256}" ]] ||
+      die "checksum mismatch for ${PACKAGE_TARBALL}"
+  fi
+  INSTALL_SPEC="${PACKAGE_TARBALL}"
+  printf 'Installing AskNews CLI from %s...\n' "${TARBALL_PATH}"
+else
+  INSTALL_SPEC="${PACKAGE}@${VERSION}"
+  printf 'Installing AskNews CLI (%s)...\n' "${VERSION}"
+fi
+
+mkdir -p "${PREFIX}"
+
+# Make re-runs idempotent: clear any prior install (npm-managed or a leftover
+# binary) so install/upgrade never aborts with EEXIST on the asknews executable.
+npm uninstall --global --prefix "${PREFIX}" "${PACKAGE}" >/dev/null 2>&1 || true
+rm -f "${PREFIX}/bin/asknews"
+
+if [[ "${INSTALL_AGENT_SKILLS}" -eq 0 ]]; then
+  ASKNEWS_NO_AGENT_SKILLS=1 npm install --global --prefix "${PREFIX}" "${INSTALL_SPEC}"
+else
+  npm install --global --prefix "${PREFIX}" "${INSTALL_SPEC}"
+fi
+
+ASKNEWS_BIN="${PREFIX}/bin/asknews"
+[[ -x "${ASKNEWS_BIN}" ]] || die "installation completed but ${ASKNEWS_BIN} is not executable"
+"${ASKNEWS_BIN}" --version >/dev/null
+
+BIN_DIR="${PREFIX}/bin"
+if [[ ":${PATH}:" != *":${BIN_DIR}:"* ]]; then
+  profile=""
+  case "$(basename "${SHELL:-}")" in
+    bash) profile="${HOME}/.bashrc" ;;
+    zsh) profile="${HOME}/.zshrc" ;;
+  esac
+
+  path_line="export PATH=$(printf '%q' "${BIN_DIR}"):\$PATH"
+  if [[ "${MODIFY_PATH}" -eq 1 && -n "${profile}" ]]; then
+    touch "${profile}"
+    if ! grep -Fq "${path_line}" "${profile}"; then
+      {
+        printf '\n# AskNews CLI\n'
+        printf '%s\n' "${path_line}"
+      } >>"${profile}"
+    fi
+    printf 'Added %s to PATH in %s.\n' "${BIN_DIR}" "${profile}"
+  else
+    printf 'Add AskNews CLI to your PATH:\n  %s\n' "${path_line}"
+  fi
+fi
+
+printf '\nAskNews CLI %s installed successfully.\n' "$("${ASKNEWS_BIN}" --version)"
+printf 'Run: asknews --help\n'

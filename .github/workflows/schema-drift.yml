@@ -1,0 +1,24 @@
+name: Schema drift
+
+# The generated OpenAPI snapshot in src/generated is built from the live AskNews schema.
+# This runs on a schedule (and on demand) so upstream-API availability never blocks PRs.
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+jobs:
+  drift:
+    name: Check generated schema against the live API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+        env:
+          ASKNEWS_NO_AGENT_SKILLS: "1"
+      - run: pnpm sync:openapi:check
