@@ -41,7 +41,12 @@ embedded AskNews skill. It must not contain credentials, `.env` files, tests, or
 
 ## Cut a release
 
-Merge the open Release PR (title `chore(main): release X.Y.Z`). The workflow then:
+Merge the open Release PR (title `chore(main): release X.Y.Z`). Note: the Release PR is opened with
+`GITHUB_TOKEN`, and GitHub does not run `pull_request` workflows for such PRs, so CI never reports on
+it and the `main` ruleset blocks a normal merge — merge it as an admin (`gh pr merge N --squash --admin`).
+The commits in it already passed CI on their own PRs. To remove this step, give release-please an
+org GitHub App token (`actions/create-github-app-token` → `token:` input); App-created PRs trigger CI
+normally. The workflow then:
 
 1. creates the tag and GitHub Release with the changelog notes;
 2. installs dependencies and bundles `dist/` from the committed OpenAPI snapshot;
