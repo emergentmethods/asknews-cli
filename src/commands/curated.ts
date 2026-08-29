@@ -223,6 +223,10 @@ function registerNews(program: Command): void {
       type: "array",
       itemType: "string",
     },
+    podcasts: {
+      description:
+        "Control whether podcast transcripts are included alongside news articles. 'include' searches both news and podcasts, 'only' returns only podcasts, and 'none' excludes podcasts.",
+    },
     return_type: {
       description:
         "Format to return articles in. 'dicts' returns a list of article dictionaries with full metadata. 'string' returns a prompt-optimized string format. String is good for accepting concise input into LLMs, dicts is good for detailed analysis and using large json objects for further processing.",

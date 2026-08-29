@@ -42,6 +42,7 @@ Search enriched real-time or historical news
 | `--continents <value>` | Filter on articles where the content is most related to continents in this list. [query, array<string>, optional, allowed: Africa\|Asia\|Oceania\|Europe\|Middle East\|North America\|South America] |
 | `--sentiment <value>` | Sentiment to filter articles on. [query, string, optional] Choices: negative, neutral, positive. |
 | `--authors <value>` | Authors to filter articles by. [query, array<string>, optional] |
+| `--podcasts <value>` | Control whether podcast transcripts are included alongside news articles. 'include' searches both news and podcasts, 'only' returns only podcasts, and 'none' excludes podcasts. [query, string, optional, default: "include"] Choices: include, only, none. |
 | `--return-type <value>` | Format to return articles in. 'dicts' returns a list of article dictionaries with full metadata. 'string' returns a prompt-optimized string format. String is good for accepting concise input into LLMs, dicts is good for detailed analysis and using large json objects for further processing. [query, string, optional, default: "dicts"] Choices: string, dicts. |
 
 **Examples:**
