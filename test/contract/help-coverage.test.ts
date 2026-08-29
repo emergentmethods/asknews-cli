@@ -106,6 +106,7 @@ describe("command help OpenAPI coverage", () => {
         "--continents",
         "--sentiment",
         "--authors",
+        "--podcasts",
         "--return-type",
       ].sort(),
     );

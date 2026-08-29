@@ -34,7 +34,9 @@ The query is a semantic search where keywords are prioritized. Use `--string-gua
 `--entity-guarantee` when a keyword or entity must be present, and `--reverse-string-guarantee` to
 exclude a name or concept. Apply date, language, country, domain, entity, or string filters only
 when justified by the task; inspect `asknews news search --help` for exact syntax and current
-enums. Advanced parameters not exposed here (search method, strategy, geo filters, caching) remain
+enums. Podcast transcripts are included by default; use `--podcasts none` to exclude them or
+`--podcasts only` to search podcasts alone (podcast items have a `domain_url` ending in `.podcast`).
+Advanced parameters not exposed here (search method, strategy, geo filters, caching) remain
 available on `asknews api news search-news`.
 
 When answering from articles:
