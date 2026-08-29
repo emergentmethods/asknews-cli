@@ -29,10 +29,11 @@ if (checkOnly) {
   const changed = await capture("git", [
     "status",
     "--short",
-    "--untracked-files=no",
+    "--untracked-files=all",
     "--",
     "src/generated",
-    "docs/commands/README.md",
+    "docs/commands",
+    "skills/asknews-cli/references/commands",
   ]);
   if (changed.trim()) {
     process.stderr.write(
