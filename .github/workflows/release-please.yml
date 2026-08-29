@@ -1,0 +1,56 @@
+name: Release Please
+
+# Automates versioning and publishing from conventional commits:
+#   1. Every push to main updates a "Release PR" (version bump + CHANGELOG).
+#   2. Merging that PR creates the vX.Y.Z tag and GitHub Release, then this same
+#      run publishes to npm and attaches the tarball. Publishing lives HERE because
+#      tags created with GITHUB_TOKEN never trigger other workflows (release.yml).
+# Only fix:/feat: (and breaking) commits produce a release; never bump package.json by hand.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release PR or publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+      - if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+      - if: ${{ steps.release.outputs.release_created }}
+        uses: pnpm/action-setup@v4
+      - if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+          cache: pnpm
+      - if: ${{ steps.release.outputs.release_created }}
+        run: pnpm install --frozen-lockfile
+        env:
+          ASKNEWS_NO_AGENT_SKILLS: "1"
+      # Bundle from the committed OpenAPI snapshot (deterministic, no network).
+      - if: ${{ steps.release.outputs.release_created }}
+        run: pnpm build:bundle
+      - if: ${{ steps.release.outputs.release_created }}
+        run: pnpm package:tarball
+      - if: ${{ steps.release.outputs.release_created }}
+        name: Publish to npm
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+      - if: ${{ steps.release.outputs.release_created }}
+        name: Attach tarball and checksum to the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ steps.release.outputs.tag_name }}" release/*.tgz release/*.tgz.sha256

@@ -79,7 +79,11 @@ pnpm build                 # generate and bundle dist/bin.js
   generated files.
 - Non-interactive commands must never prompt. Respect `CI`, non-TTY streams, and explicit flags.
 - Destructive or billable live tests require both the live-test gate and an operation-specific gate.
-- Publishing the npm package happens through the release workflow on a `v*` tag; do not publish by hand.
+- Releases are automated by release-please (`.github/workflows/release-please.yml`): merging to `main`
+  updates a Release PR; merging that PR tags, publishes to npm, and creates the GitHub Release.
+  Never bump `package.json` version by hand and never push `v*` tags by hand (`release.yml` is only
+  an emergency fallback). Only `fix:`/`feat:`/breaking commits trigger a release — use `fix:` (not
+  `chore:`) for user-visible schema refreshes so they ship.
 
 ## Docs map
 

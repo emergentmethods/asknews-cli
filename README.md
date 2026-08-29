@@ -1,5 +1,7 @@
 # AskNews CLI
 
+[![npm version](https://img.shields.io/npm/v/%40emergentmethods%2Fasknews-cli?label=npm)](https://www.npmjs.com/package/@emergentmethods/asknews-cli)
+
 The official AskNews command-line interface for humans, scripts, CI, and AI agents.
 
 ## Install
