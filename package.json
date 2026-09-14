@@ -1,6 +1,6 @@
 {
   "name": "@emergentmethods/asknews-cli",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "The official AskNews CLI for humans, automation, and agents",
   "type": "module",
   "license": "MIT",
