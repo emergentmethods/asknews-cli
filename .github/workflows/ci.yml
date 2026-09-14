@@ -26,3 +26,24 @@ jobs:
       - run: pnpm test:coverage
       # Bundle from the committed OpenAPI snapshot (deterministic, no network).
       - run: pnpm build:bundle
+
+  # The HTTP layer hands an npm `undici` dispatcher to Node's bundled fetch (a different undici
+  # major inside Node 22). That contract is exactly what a Node major bump can break, so also run
+  # the suite on the newest supported major. Kept as a separate job so the required check name
+  # of the primary job stays stable.
+  compat:
+    name: Node 24 compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+        env:
+          ASKNEWS_NO_AGENT_SKILLS: "1"
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build:bundle
