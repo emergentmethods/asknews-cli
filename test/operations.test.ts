@@ -5,7 +5,7 @@ describe("operation manifest access", () => {
   test("looks up and groups generated operations", () => {
     expect(getOperation("search_news").path).toBe("/v1/news/search");
     expect(operationsByTag().get("news")?.length).toBeGreaterThan(0);
-    expect(manifest.operations.length).toBe(46);
+    expect(manifest.operations.length).toBe(32);
   });
 
   test("rejects an unknown operation", () => {

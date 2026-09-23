@@ -1,6 +1,6 @@
 # api news
 
-Generated from AskNews API 0.31.1.
+Generated from AskNews API 0.32.1.
 
 ## Operations
 
@@ -66,29 +66,6 @@ show the number of articles indexed per source.
 | `--countries-blacklist` | Source countries to blacklist from search (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to reverse_entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: string. Optional. |
 | `--continents` | Continents to filter by Location: query. Type: string. Optional. |
 | `--sentiment` | Sentiment to filter news articles by. Location: query. Type: string. Optional. |
-
-### `asknews api news get-sources-report`
-
-This endpoint is primarly used for transparency and monitoring the
-diversity of the data.
-
-Visualized at `https://asknews.app/transparency`.
-
-Get the distribution of sources/languages/countries underlying AskNews content.
-
-- Request: `GET /v1/sources`
-- Operation ID: `get_sources_report`
-- Safety: `read-only`
-
-**Options:**
-
-| Option | Description |
-| --- | --- |
-| `--n-points` | Number of points to return Location: query. Type: integer. Optional. Default: `100`. |
-| `--start-timestamp` | Start timestamp to filter by Location: query. Type: string. Optional. |
-| `--end-timestamp` | End timestamp to filter by Location: query. Type: string. Optional. |
-| `--metric` | Metric to filter by Location: query. Type: string. Optional. Choices: duplication, countries_diversity, languages_diversity, sources_diversity, bucket_loss. Default: `"countries_diversity"`. |
-| `--sampling` | Sampling to use Location: query. Type: string. Optional. Choices: 5m, 1h, 4h, 1d. Default: `"1h"`. |
 
 ### `asknews api news search-news`
 

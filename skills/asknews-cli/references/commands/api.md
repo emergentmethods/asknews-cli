@@ -25,17 +25,14 @@ asknews api list --tag news --safety read-only --output json
 ## API groups
 
 - [`asknews api alerts`](api-alerts) — 8 operations
-- [`asknews api analytics`](api-analytics) — 1 operations
 - [`asknews api autofilter`](api-autofilter) — 1 operations
 - [`asknews api byok`](api-byok) — 3 operations
-- [`asknews api charts`](api-charts) — 1 operations
 - [`asknews api chat`](api-chat) — 3 operations
 - [`asknews api distribution`](api-distribution) — 2 operations
 - [`asknews api forecast`](api-forecast) — 1 operations
 - [`asknews api graph`](api-graph) — 1 operations
 - [`asknews api index-urls`](api-index-urls) — 1 operations
-- [`asknews api news`](api-news) — 5 operations
-- [`asknews api newsletters`](api-newsletters) — 11 operations
+- [`asknews api news`](api-news) — 4 operations
 - [`asknews api ping`](api-ping) — 1 operations
 - [`asknews api profile`](api-profile) — 2 operations
 - [`asknews api reddit`](api-reddit) — 1 operations

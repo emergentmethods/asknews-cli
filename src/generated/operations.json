@@ -1,8 +1,8 @@
 {
-  "generatedAt": "schema-version:0.31.1",
-  "schemaVersion": "0.31.1",
+  "generatedAt": "schema-version:0.32.1",
+  "schemaVersion": "0.32.1",
   "schemaUrl": "https://api.asknews.app/openapi.json",
-  "schemaSha256": "b09b6faf711728bbd63da39cc7029a726517cde48ea0f6bad35d2883cf648258",
+  "schemaSha256": "906eb24cff694ba3049a18b15e1b12d1bfeee19487570be9e6a1b17e962bf602",
   "operations": [
     {
       "operationId": "create_alert",
@@ -1285,10 +1285,14 @@
                                       "claude-sonnet-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
+                                      "claude-opus-5-5",
                                       "claude-opus-4-6",
                                       "claude-fable-5",
+                                      "claude-fable-5-1",
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
+                                      "gpt-6-sol",
+                                      "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
                                       "deepseek-r1-0528",
@@ -1753,12 +1757,14 @@
                             "claude-opus-4-5-20251101",
                             "claude-opus-4-6",
                             "claude-fable-5",
+                            "claude-fable-5-1",
                             "claude-sonnet-4-6",
                             "claude-sonnet-5",
                             "claude-opus-4-8",
                             "claude-opus-5",
                             "gpt-5.6-terra",
                             "gpt-5.6-sol",
+                            "gpt-6-astra",
                             "meta-llama/Meta-Llama-3.1-405B-Instruct",
                             "meta-llama/Meta-Llama-3.3-70B-Instruct"
                           ],
@@ -2396,10 +2402,14 @@
                                     "claude-sonnet-5",
                                     "claude-opus-4-8",
                                     "claude-opus-5",
+                                    "claude-opus-5-5",
                                     "claude-opus-4-6",
                                     "claude-fable-5",
+                                    "claude-fable-5-1",
                                     "gpt-5.6-terra",
                                     "gpt-5.6-sol",
+                                    "gpt-6-sol",
+                                    "gpt-6-astra",
                                     "deepseek",
                                     "deepseek-basic",
                                     "deepseek-r1-0528",
@@ -2547,12 +2557,14 @@
                               "claude-opus-4-5-20251101",
                               "claude-opus-4-6",
                               "claude-fable-5",
+                              "claude-fable-5-1",
                               "claude-sonnet-4-6",
                               "claude-sonnet-5",
                               "claude-opus-4-8",
                               "claude-opus-5",
                               "gpt-5.6-terra",
                               "gpt-5.6-sol",
+                              "gpt-6-astra",
                               "meta-llama/Meta-Llama-3.1-405B-Instruct",
                               "meta-llama/Meta-Llama-3.3-70B-Instruct"
                             ],
@@ -3190,10 +3202,14 @@
                                       "claude-sonnet-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
+                                      "claude-opus-5-5",
                                       "claude-opus-4-6",
                                       "claude-fable-5",
+                                      "claude-fable-5-1",
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
+                                      "gpt-6-sol",
+                                      "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
                                       "deepseek-r1-0528",
@@ -4851,10 +4867,14 @@
                                       "claude-sonnet-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
+                                      "claude-opus-5-5",
                                       "claude-opus-4-6",
                                       "claude-fable-5",
+                                      "claude-fable-5-1",
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
+                                      "gpt-6-sol",
+                                      "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
                                       "deepseek-r1-0528",
@@ -5356,12 +5376,14 @@
                         "claude-opus-4-5-20251101",
                         "claude-opus-4-6",
                         "claude-fable-5",
+                        "claude-fable-5-1",
                         "claude-sonnet-4-6",
                         "claude-sonnet-5",
                         "claude-opus-4-8",
                         "claude-opus-5",
                         "gpt-5.6-terra",
                         "gpt-5.6-sol",
+                        "gpt-6-astra",
                         "meta-llama/Meta-Llama-3.1-405B-Instruct",
                         "meta-llama/Meta-Llama-3.3-70B-Instruct"
                       ],
@@ -5999,10 +6021,14 @@
                                 "claude-sonnet-5",
                                 "claude-opus-4-8",
                                 "claude-opus-5",
+                                "claude-opus-5-5",
                                 "claude-opus-4-6",
                                 "claude-fable-5",
+                                "claude-fable-5-1",
                                 "gpt-5.6-terra",
                                 "gpt-5.6-sol",
+                                "gpt-6-sol",
+                                "gpt-6-astra",
                                 "deepseek",
                                 "deepseek-basic",
                                 "deepseek-r1-0528",
@@ -6141,12 +6167,14 @@
                               "claude-opus-4-5-20251101",
                               "claude-opus-4-6",
                               "claude-fable-5",
+                              "claude-fable-5-1",
                               "claude-sonnet-4-6",
                               "claude-sonnet-5",
                               "claude-opus-4-8",
                               "claude-opus-5",
                               "gpt-5.6-terra",
                               "gpt-5.6-sol",
+                              "gpt-6-astra",
                               "meta-llama/Meta-Llama-3.1-405B-Instruct",
                               "meta-llama/Meta-Llama-3.3-70B-Instruct"
                             ],
@@ -6784,10 +6812,14 @@
                                       "claude-sonnet-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
+                                      "claude-opus-5-5",
                                       "claude-opus-4-6",
                                       "claude-fable-5",
+                                      "claude-fable-5-1",
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
+                                      "gpt-6-sol",
+                                      "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
                                       "deepseek-r1-0528",
@@ -6949,76 +6981,6 @@
       "safety": "mutating"
     },
     {
-      "operationId": "get_asset_sentiment",
-      "tag": "analytics",
-      "command": "get-asset-sentiment",
-      "method": "GET",
-      "path": "/v1/analytics/finance/sentiment",
-      "summary": "Get a timeseries of finance news sentiment for assets",
-      "description": "Get the news sentiment for a given asset during a provided period of time.\n\nThis endpoint is good for narrow AI, like using in combination with a regressor\nto forecast prices etc.",
-      "parameters": [
-        {
-          "name": "asset",
-          "location": "query",
-          "required": true,
-          "description": "The asset name to query for sentiment.",
-          "type": "string",
-          "allowedValues": [
-            "bitcoin",
-            "ethereum",
-            "cardano",
-            "uniswap",
-            "ripple",
-            "solana",
-            "polkadot",
-            "polygon",
-            "chainlink",
-            "tether",
-            "dogecoin",
-            "monero",
-            "tron",
-            "binance",
-            "aave",
-            "tesla",
-            "microsoft",
-            "amazon"
-          ]
-        },
-        {
-          "name": "metric",
-          "location": "query",
-          "required": false,
-          "description": "The metric to obtain. Weighted metrics account for page-rank of original source. Higher page rank sources are weighted more heavily.",
-          "type": "string",
-          "defaultValue": "news_positive",
-          "allowedValues": [
-            "news_positive",
-            "news_negative",
-            "news_total",
-            "news_positive_weighted",
-            "news_negative_weighted",
-            "news_total_weighted"
-          ]
-        },
-        {
-          "name": "date_from",
-          "location": "query",
-          "required": false,
-          "description": "The start date in ISO format",
-          "type": "string"
-        },
-        {
-          "name": "date_to",
-          "location": "query",
-          "required": false,
-          "description": "The end date in ISO format",
-          "type": "string"
-        }
-      ],
-      "requestBody": null,
-      "safety": "read-only"
-    },
-    {
       "operationId": "autofilter",
       "tag": "autofilter",
       "command": "autofilter",
@@ -7130,37 +7092,6 @@
       "safety": "mutating"
     },
     {
-      "operationId": "create_charts_endpoint",
-      "tag": "charts",
-      "command": "create-charts-endpoint",
-      "method": "POST",
-      "path": "/v1/chat/charts",
-      "summary": "Create a chart",
-      "description": "Create charts.",
-      "parameters": [],
-      "requestBody": {
-        "required": true,
-        "contentTypes": [
-          "application/json"
-        ],
-        "schema": {
-          "properties": {
-            "query": {
-              "type": "string",
-              "title": "Query",
-              "description": "The chart query to create"
-            }
-          },
-          "type": "object",
-          "required": [
-            "query"
-          ],
-          "title": "CreateChartRequest"
-        }
-      },
-      "safety": "high-cost"
-    },
-    {
       "operationId": "deep_news",
       "tag": "chat",
       "command": "deep-news",
@@ -7255,10 +7186,14 @@
                     "claude-sonnet-5",
                     "claude-opus-4-8",
                     "claude-opus-5",
+                    "claude-opus-5-5",
                     "claude-opus-4-6",
                     "claude-fable-5",
+                    "claude-fable-5-1",
                     "gpt-5.6-terra",
                     "gpt-5.6-sol",
+                    "gpt-6-sol",
+                    "gpt-6-astra",
                     "deepseek",
                     "deepseek-basic",
                     "deepseek-r1-0528",
@@ -7815,8 +7750,8 @@
       "command": "top-n-articles-for-domains",
       "method": "GET",
       "path": "/v1/distribution/articles/top_n_for_domains",
-      "summary": "Get the top N articles by hits for domains",
-      "description": "Get the top N domain articles by hits.",
+      "summary": "Get the top N articles by metric for domains",
+      "description": "Get the top N domain articles ranked by the selected metric.",
       "parameters": [
         {
           "name": "domain_names",
@@ -7858,6 +7793,19 @@
           "required": false,
           "description": "End date to filter by (timestamp in seconds since epoch)",
           "type": "string"
+        },
+        {
+          "name": "metric",
+          "location": "query",
+          "required": false,
+          "description": "Metric used to rank and count the returned articles",
+          "type": "string",
+          "defaultValue": "surface",
+          "allowedValues": [
+            "surface",
+            "citation",
+            "grounded"
+          ]
         }
       ],
       "requestBody": null,
@@ -8449,70 +8397,6 @@
       "safety": "read-only"
     },
     {
-      "operationId": "get_sources_report",
-      "tag": "news",
-      "command": "get-sources-report",
-      "method": "GET",
-      "path": "/v1/sources",
-      "summary": "Get the sources underlying AskNews",
-      "description": "This endpoint is primarly used for transparency and monitoring the\ndiversity of the data.\n\nVisualized at `https://asknews.app/transparency`.\n\nGet the distribution of sources/languages/countries underlying AskNews content.",
-      "parameters": [
-        {
-          "name": "n_points",
-          "location": "query",
-          "required": false,
-          "description": "Number of points to return",
-          "type": "integer",
-          "defaultValue": 100
-        },
-        {
-          "name": "start_timestamp",
-          "location": "query",
-          "required": false,
-          "description": "Start timestamp to filter by",
-          "type": "string"
-        },
-        {
-          "name": "end_timestamp",
-          "location": "query",
-          "required": false,
-          "description": "End timestamp to filter by",
-          "type": "string"
-        },
-        {
-          "name": "metric",
-          "location": "query",
-          "required": false,
-          "description": "Metric to filter by",
-          "type": "string",
-          "defaultValue": "countries_diversity",
-          "allowedValues": [
-            "duplication",
-            "countries_diversity",
-            "languages_diversity",
-            "sources_diversity",
-            "bucket_loss"
-          ]
-        },
-        {
-          "name": "sampling",
-          "location": "query",
-          "required": false,
-          "description": "Sampling to use",
-          "type": "string",
-          "defaultValue": "1h",
-          "allowedValues": [
-            "5m",
-            "1h",
-            "4h",
-            "1d"
-          ]
-        }
-      ],
-      "requestBody": null,
-      "safety": "read-only"
-    },
-    {
       "operationId": "search_news",
       "tag": "news",
       "command": "search-news",
@@ -8878,682 +8762,6 @@
       ],
       "requestBody": null,
       "safety": "read-only"
-    },
-    {
-      "operationId": "delete_newsletter",
-      "tag": "newsletters",
-      "command": "delete-newsletter",
-      "method": "DELETE",
-      "path": "/v1/chat/newsletters/{newsletter_id}",
-      "summary": "Delete a newsletter",
-      "description": "Delete a newsletter.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        }
-      ],
-      "requestBody": null,
-      "safety": "mutating"
-    },
-    {
-      "operationId": "delete_newsletter_contact",
-      "tag": "newsletters",
-      "command": "delete-newsletter-contact",
-      "method": "DELETE",
-      "path": "/v1/chat/newsletters/{newsletter_id}/contacts/{contact_id}",
-      "summary": "Delete a newsletter contact",
-      "description": "Delete a newsletter contact.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        },
-        {
-          "name": "contact_id",
-          "location": "path",
-          "required": true,
-          "description": "The contact ID",
-          "type": "string"
-        }
-      ],
-      "requestBody": null,
-      "safety": "mutating"
-    },
-    {
-      "operationId": "get_newsletter",
-      "tag": "newsletters",
-      "command": "get-newsletter",
-      "method": "GET",
-      "path": "/v1/chat/newsletters/{newsletter_id}",
-      "summary": "Get a newsletter",
-      "description": "Get a newsletter.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        }
-      ],
-      "requestBody": null,
-      "safety": "read-only"
-    },
-    {
-      "operationId": "get_newsletter_contact",
-      "tag": "newsletters",
-      "command": "get-newsletter-contact",
-      "method": "GET",
-      "path": "/v1/chat/newsletters/{newsletter_id}/contacts/{contact_id}",
-      "summary": "Get a newsletter contact",
-      "description": "Get a newsletter contact.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        },
-        {
-          "name": "contact_id",
-          "location": "path",
-          "required": true,
-          "description": "The contact ID",
-          "type": "string"
-        }
-      ],
-      "requestBody": null,
-      "safety": "read-only"
-    },
-    {
-      "operationId": "get_newsletter_contacts",
-      "tag": "newsletters",
-      "command": "get-newsletter-contacts",
-      "method": "GET",
-      "path": "/v1/chat/newsletters/{newsletter_id}/contacts",
-      "summary": "Get newsletter contacts",
-      "description": "Get newsletter contacts.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        }
-      ],
-      "requestBody": null,
-      "safety": "read-only"
-    },
-    {
-      "operationId": "get_newsletters",
-      "tag": "newsletters",
-      "command": "get-newsletters",
-      "method": "GET",
-      "path": "/v1/chat/newsletters",
-      "summary": "Get all created newsletters",
-      "description": "Get all created newsletters.",
-      "parameters": [],
-      "requestBody": null,
-      "safety": "read-only"
-    },
-    {
-      "operationId": "get_public_newsletters",
-      "tag": "newsletters",
-      "command": "get-public-newsletters",
-      "method": "GET",
-      "path": "/v1/chat/newsletters/public",
-      "summary": "Get all public newsletters",
-      "description": "Get all public newsletters.",
-      "parameters": [
-        {
-          "name": "page",
-          "location": "query",
-          "required": false,
-          "description": "The page number to get",
-          "type": "integer",
-          "defaultValue": 1
-        },
-        {
-          "name": "per_page",
-          "location": "query",
-          "required": false,
-          "description": "The number of items per page",
-          "type": "integer",
-          "defaultValue": 10
-        },
-        {
-          "name": "all",
-          "location": "query",
-          "required": false,
-          "description": "Whether to get all the public newsletters",
-          "type": "boolean",
-          "defaultValue": false
-        }
-      ],
-      "requestBody": null,
-      "safety": "read-only"
-    },
-    {
-      "operationId": "patch_newsletter_contact",
-      "tag": "newsletters",
-      "command": "patch-newsletter-contact",
-      "method": "PATCH",
-      "path": "/v1/chat/newsletters/{newsletter_id}/contacts/{contact_id}",
-      "summary": "Update a newsletter contact",
-      "description": "Update a newsletter contact.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        },
-        {
-          "name": "contact_id",
-          "location": "path",
-          "required": true,
-          "description": "The contact ID",
-          "type": "string"
-        }
-      ],
-      "requestBody": {
-        "required": true,
-        "contentTypes": [
-          "application/json"
-        ],
-        "schema": {
-          "properties": {
-            "email": {
-              "type": "string",
-              "title": "Email"
-            },
-            "first_name": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "First Name"
-            },
-            "last_name": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Last Name"
-            },
-            "unsubscribed": {
-              "type": "boolean",
-              "title": "Unsubscribed",
-              "default": false
-            }
-          },
-          "type": "object",
-          "required": [
-            "email"
-          ],
-          "title": "NewsletterContactRequest"
-        }
-      },
-      "safety": "mutating"
-    },
-    {
-      "operationId": "post_newsletter",
-      "tag": "newsletters",
-      "command": "post-newsletter",
-      "method": "POST",
-      "path": "/v1/chat/newsletters",
-      "summary": "Create a newsletter",
-      "description": "Create a newsletter.",
-      "parameters": [],
-      "requestBody": {
-        "required": true,
-        "contentTypes": [
-          "application/json"
-        ],
-        "schema": {
-          "properties": {
-            "name": {
-              "type": "string",
-              "title": "Name",
-              "description": "The name of the newsletter.",
-              "example": "Daily Economy News"
-            },
-            "query": {
-              "type": "string",
-              "title": "Query",
-              "description": "The natural language query to run for the newsletter.",
-              "example": "Send me the latest news on the economy."
-            },
-            "cron": {
-              "type": "string",
-              "title": "Cron",
-              "description": "The cron schedule for the newsletter. For example daily at 00:00 UTC is '0 0 * * *'. See https://crontab.run/ for more examples",
-              "example": "0 0 * * *"
-            },
-            "model": {
-              "type": "string",
-              "enum": [
-                "gpt-4o",
-                "gpt-4o-mini",
-                "claude-3-5-sonnet-latest",
-                "meta-llama/Meta-Llama-3.1-405B-Instruct",
-                "meta-llama/Meta-Llama-3.3-70B-Instruct"
-              ],
-              "title": "Model",
-              "description": "The model to use for the newsletter.",
-              "example": "gpt-4o-mini"
-            },
-            "subject": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Subject",
-              "description": "The subject of the newsletter. If not provided it will be auto generated.",
-              "example": "Your Daily Economy News"
-            },
-            "sender": {
-              "type": "string",
-              "title": "Sender",
-              "description": "The sender of the newsletter.",
-              "example": "Your Name <sender@domain.com>"
-            },
-            "logo_url": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "maxLength": 2083,
-                  "minLength": 1,
-                  "format": "uri"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Logo Url",
-              "description": "The logo URL for the newsletter.",
-              "example": "https://example.com/logo.png"
-            },
-            "reply_to": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Reply To",
-              "description": "The reply-to address for the newsletter. If not provided, the sender will be used.",
-              "example": "Your Name <sender@domain.com>"
-            },
-            "audience_id": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Audience Id",
-              "description": "The audience ID to use for the newsletter. If not provided a new audience will be created.",
-              "example": "123e4567-e89b-12d3-a456-426614174000"
-            },
-            "resend_api_key": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Resend Api Key",
-              "description": "The resend API key to use for the newsletter. If not provided, the newsletter will not be sent.",
-              "example": "re_123456789"
-            },
-            "public": {
-              "type": "boolean",
-              "title": "Public",
-              "description": "Whether the newsletter is public or not. If not provided, the newsletter will be public. If you make the newsletter public only title and query will be shown.",
-              "default": true
-            },
-            "active": {
-              "type": "boolean",
-              "title": "Active",
-              "description": "Whether the newsletter is active or not. If not provided, the newsletter will be active. If you make the newsletter inactive, it will not be sent.",
-              "default": true
-            },
-            "expires_at": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Expires At",
-              "description": "The expiration date for the alert. Default is None. If set, the alert will be disabled after this date."
-            }
-          },
-          "type": "object",
-          "required": [
-            "name",
-            "query",
-            "cron",
-            "model",
-            "sender"
-          ],
-          "title": "CreateNewsletterRequest"
-        }
-      },
-      "safety": "mutating"
-    },
-    {
-      "operationId": "post_newsletter_contacts",
-      "tag": "newsletters",
-      "command": "post-newsletter-contacts",
-      "method": "POST",
-      "path": "/v1/chat/newsletters/{newsletter_id}/contacts",
-      "summary": "Create a newsletter contact",
-      "description": "Create a newsletter contact.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        }
-      ],
-      "requestBody": {
-        "required": true,
-        "contentTypes": [
-          "application/json"
-        ],
-        "schema": {
-          "properties": {
-            "email": {
-              "type": "string",
-              "title": "Email"
-            },
-            "first_name": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "First Name"
-            },
-            "last_name": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Last Name"
-            },
-            "unsubscribed": {
-              "type": "boolean",
-              "title": "Unsubscribed",
-              "default": false
-            }
-          },
-          "type": "object",
-          "required": [
-            "email"
-          ],
-          "title": "NewsletterContactRequest"
-        }
-      },
-      "safety": "mutating"
-    },
-    {
-      "operationId": "put_newsletter",
-      "tag": "newsletters",
-      "command": "put-newsletter",
-      "method": "PUT",
-      "path": "/v1/chat/newsletters/{newsletter_id}",
-      "summary": "Update a newsletter",
-      "description": "Update a newsletter.",
-      "parameters": [
-        {
-          "name": "newsletter_id",
-          "location": "path",
-          "required": true,
-          "description": "The newsletter ID",
-          "type": "string",
-          "format": "uuid"
-        }
-      ],
-      "requestBody": {
-        "required": true,
-        "contentTypes": [
-          "application/json"
-        ],
-        "schema": {
-          "properties": {
-            "name": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Name",
-              "description": "The name of the newsletter.",
-              "example": "Daily Economy News"
-            },
-            "query": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Query",
-              "description": "The natural language query to run for the newsletter.",
-              "example": "Send me the latest news on the economy."
-            },
-            "cron": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Cron",
-              "description": "The cron schedule for the newsletter. For example daily at 00:00 UTC is '0 0 * * *'. See https://crontab.run/ for more examples",
-              "example": "0 0 * * *"
-            },
-            "model": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "enum": [
-                    "gpt-4o",
-                    "gpt-4o-mini",
-                    "claude-3-5-sonnet-latest",
-                    "meta-llama/Meta-Llama-3.1-405B-Instruct",
-                    "meta-llama/Meta-Llama-3.3-70B-Instruct"
-                  ]
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Model",
-              "description": "The model to use for the newsletter.",
-              "example": "gpt-4o-mini"
-            },
-            "subject": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Subject",
-              "description": "The subject of the newsletter. If not provided it will be auto generated.",
-              "example": "Your Daily Economy News"
-            },
-            "sender": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Sender",
-              "description": "The sender of the newsletter.",
-              "example": "Your Name <sender@domain.com>"
-            },
-            "logo_url": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "maxLength": 2083,
-                  "minLength": 1,
-                  "format": "uri"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Logo Url",
-              "description": "The logo URL for the newsletter.",
-              "example": "https://example.com/logo.png"
-            },
-            "reply_to": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Reply To",
-              "description": "The reply-to address for the newsletter. If not provided, the sender will be used.",
-              "example": "Your Name <sender@domain.com>"
-            },
-            "audience_id": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Audience Id",
-              "description": "The audience ID to use for the newsletter. If not provided a new audience will be created.",
-              "example": "123e4567-e89b-12d3-a456-426614174000"
-            },
-            "resend_api_key": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Resend Api Key",
-              "description": "The resend API key to use for the newsletter. If not provided, the newsletter will not be sent.",
-              "example": "re_123456789"
-            },
-            "public": {
-              "anyOf": [
-                {
-                  "type": "boolean"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Public",
-              "description": "Whether the newsletter is public or not. If not provided, the newsletter will be public. If you make the newsletter public only title and query will be shown."
-            },
-            "active": {
-              "anyOf": [
-                {
-                  "type": "boolean"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Active",
-              "description": "Whether the newsletter is active or not. If not provided, the newsletter will be active. If you make the newsletter inactive, it will not be sent."
-            },
-            "expires_at": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Expires At",
-              "description": "The expiration date for the alert. Default is None. If set, the alert will be disabled after this date."
-            }
-          },
-          "type": "object",
-          "title": "UpdateNewsletterRequest"
-        }
-      },
-      "safety": "mutating"
     },
     {
       "operationId": "ping",
