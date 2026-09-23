@@ -1,6 +1,6 @@
 # api distribution
 
-Generated from AskNews API 0.31.1.
+Generated from AskNews API 0.32.1.
 
 ## Operations
 
@@ -23,7 +23,7 @@ Get the hit share for a list of domains in a time period.
 
 ### `asknews api distribution top-n-articles-for-domains`
 
-Get the top N domain articles by hits.
+Get the top N domain articles ranked by the selected metric.
 
 - Request: `GET /v1/distribution/articles/top_n_for_domains`
 - Operation ID: `top_n_articles_for_domains`
@@ -38,6 +38,7 @@ Get the top N domain articles by hits.
 | `--page` | Page number (1-based; page size = limit) Location: query. Type: integer. Optional. Default: `1`. Minimum: 1. |
 | `--start-date` | Start date to filter by (timestamp in seconds since epoch) Location: query. Type: string. Optional. |
 | `--end-date` | End date to filter by (timestamp in seconds since epoch) Location: query. Type: string. Optional. |
+| `--metric` | Metric used to rank and count the returned articles Location: query. Type: string. Optional. Choices: surface, citation, grounded. Default: `"surface"`. |
 
 ## Global options
 

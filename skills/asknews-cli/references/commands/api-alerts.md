@@ -1,6 +1,6 @@
 # api alerts
 
-Generated from AskNews API 0.31.1.
+Generated from AskNews API 0.32.1.
 
 ## Operations
 
