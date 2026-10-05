@@ -1,8 +1,8 @@
 {
-  "generatedAt": "schema-version:0.32.1",
-  "schemaVersion": "0.32.1",
+  "generatedAt": "schema-version:0.32.3",
+  "schemaVersion": "0.32.3",
   "schemaUrl": "https://api.asknews.app/openapi.json",
-  "schemaSha256": "906eb24cff694ba3049a18b15e1b12d1bfeee19487570be9e6a1b17e962bf602",
+  "schemaSha256": "94bc7c87bbbb386e687787a73816f587073543c24c5394679c640a4b7ab7e8ec",
   "operations": [
     {
       "operationId": "create_alert",
@@ -1283,6 +1283,7 @@
                                       "claude-opus-4-5-20251101",
                                       "claude-sonnet-4-6",
                                       "claude-sonnet-5",
+                                      "claude-sonnet-5-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
                                       "claude-opus-5-5",
@@ -1292,6 +1293,7 @@
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
                                       "gpt-6-sol",
+                                      "gpt-6.1-sol",
                                       "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
@@ -1309,7 +1311,8 @@
                                       "gemini-3.5-flash",
                                       "gemini-3.6-flash",
                                       "open-source-best",
-                                      "kimi-k2p5"
+                                      "kimi-k2p5",
+                                      "kimi-k3"
                                     ],
                                     "title": "DeepNewsModel"
                                   },
@@ -2400,6 +2403,7 @@
                                     "claude-opus-4-5-20251101",
                                     "claude-sonnet-4-6",
                                     "claude-sonnet-5",
+                                    "claude-sonnet-5-5",
                                     "claude-opus-4-8",
                                     "claude-opus-5",
                                     "claude-opus-5-5",
@@ -2409,6 +2413,7 @@
                                     "gpt-5.6-terra",
                                     "gpt-5.6-sol",
                                     "gpt-6-sol",
+                                    "gpt-6.1-sol",
                                     "gpt-6-astra",
                                     "deepseek",
                                     "deepseek-basic",
@@ -2426,7 +2431,8 @@
                                     "gemini-3.5-flash",
                                     "gemini-3.6-flash",
                                     "open-source-best",
-                                    "kimi-k2p5"
+                                    "kimi-k2p5",
+                                    "kimi-k3"
                                   ],
                                   "title": "DeepNewsModel"
                                 },
@@ -3200,6 +3206,7 @@
                                       "claude-opus-4-5-20251101",
                                       "claude-sonnet-4-6",
                                       "claude-sonnet-5",
+                                      "claude-sonnet-5-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
                                       "claude-opus-5-5",
@@ -3209,6 +3216,7 @@
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
                                       "gpt-6-sol",
+                                      "gpt-6.1-sol",
                                       "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
@@ -3226,7 +3234,8 @@
                                       "gemini-3.5-flash",
                                       "gemini-3.6-flash",
                                       "open-source-best",
-                                      "kimi-k2p5"
+                                      "kimi-k2p5",
+                                      "kimi-k3"
                                     ],
                                     "title": "DeepNewsModel"
                                   },
@@ -4865,6 +4874,7 @@
                                       "claude-opus-4-5-20251101",
                                       "claude-sonnet-4-6",
                                       "claude-sonnet-5",
+                                      "claude-sonnet-5-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
                                       "claude-opus-5-5",
@@ -4874,6 +4884,7 @@
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
                                       "gpt-6-sol",
+                                      "gpt-6.1-sol",
                                       "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
@@ -4891,7 +4902,8 @@
                                       "gemini-3.5-flash",
                                       "gemini-3.6-flash",
                                       "open-source-best",
-                                      "kimi-k2p5"
+                                      "kimi-k2p5",
+                                      "kimi-k3"
                                     ],
                                     "title": "DeepNewsModel"
                                   },
@@ -6019,6 +6031,7 @@
                                 "claude-opus-4-5-20251101",
                                 "claude-sonnet-4-6",
                                 "claude-sonnet-5",
+                                "claude-sonnet-5-5",
                                 "claude-opus-4-8",
                                 "claude-opus-5",
                                 "claude-opus-5-5",
@@ -6028,6 +6041,7 @@
                                 "gpt-5.6-terra",
                                 "gpt-5.6-sol",
                                 "gpt-6-sol",
+                                "gpt-6.1-sol",
                                 "gpt-6-astra",
                                 "deepseek",
                                 "deepseek-basic",
@@ -6045,7 +6059,8 @@
                                 "gemini-3.5-flash",
                                 "gemini-3.6-flash",
                                 "open-source-best",
-                                "kimi-k2p5"
+                                "kimi-k2p5",
+                                "kimi-k3"
                               ],
                               "title": "DeepNewsModel"
                             },
@@ -6810,6 +6825,7 @@
                                       "claude-opus-4-5-20251101",
                                       "claude-sonnet-4-6",
                                       "claude-sonnet-5",
+                                      "claude-sonnet-5-5",
                                       "claude-opus-4-8",
                                       "claude-opus-5",
                                       "claude-opus-5-5",
@@ -6819,6 +6835,7 @@
                                       "gpt-5.6-terra",
                                       "gpt-5.6-sol",
                                       "gpt-6-sol",
+                                      "gpt-6.1-sol",
                                       "gpt-6-astra",
                                       "deepseek",
                                       "deepseek-basic",
@@ -6836,7 +6853,8 @@
                                       "gemini-3.5-flash",
                                       "gemini-3.6-flash",
                                       "open-source-best",
-                                      "kimi-k2p5"
+                                      "kimi-k2p5",
+                                      "kimi-k3"
                                     ],
                                     "title": "DeepNewsModel"
                                   },
@@ -7184,6 +7202,7 @@
                     "claude-opus-4-5-20251101",
                     "claude-sonnet-4-6",
                     "claude-sonnet-5",
+                    "claude-sonnet-5-5",
                     "claude-opus-4-8",
                     "claude-opus-5",
                     "claude-opus-5-5",
@@ -7193,6 +7212,7 @@
                     "gpt-5.6-terra",
                     "gpt-5.6-sol",
                     "gpt-6-sol",
+                    "gpt-6.1-sol",
                     "gpt-6-astra",
                     "deepseek",
                     "deepseek-basic",
@@ -7210,7 +7230,8 @@
                     "gemini-3.5-flash",
                     "gemini-3.6-flash",
                     "open-source-best",
-                    "kimi-k2p5"
+                    "kimi-k2p5",
+                    "kimi-k3"
                   ],
                   "title": "DeepNewsModel"
                 },

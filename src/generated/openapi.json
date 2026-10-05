@@ -3,7 +3,7 @@
   "info": {
     "title": "AskNews API",
     "description": "AskNews API [![status](https://status.asknews.app/api/badge/2/status?style=for-the-badge)](https://status.asknews.app/status/prod)",
-    "version": "0.32.1"
+    "version": "0.32.3"
   },
   "servers": [
     {
@@ -19482,6 +19482,7 @@
           "claude-opus-4-5-20251101",
           "claude-sonnet-4-6",
           "claude-sonnet-5",
+          "claude-sonnet-5-5",
           "claude-opus-4-8",
           "claude-opus-5",
           "claude-opus-5-5",
@@ -19491,6 +19492,7 @@
           "gpt-5.6-terra",
           "gpt-5.6-sol",
           "gpt-6-sol",
+          "gpt-6.1-sol",
           "gpt-6-astra",
           "deepseek",
           "deepseek-basic",
@@ -19508,7 +19510,8 @@
           "gemini-3.5-flash",
           "gemini-3.6-flash",
           "open-source-best",
-          "kimi-k2p5"
+          "kimi-k2p5",
+          "kimi-k3"
         ],
         "title": "DeepNewsModel"
       },
