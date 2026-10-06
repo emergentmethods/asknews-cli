@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/emergentmethods/asknews-cli/compare/v0.3.0...v0.3.1) (2026-10-06)
+
+
+### Bug Fixes
+
+* Refresh model catalog from OpenAPI 0.32.3 ([#11](https://github.com/emergentmethods/asknews-cli/issues/11)) ([ae33f5c](https://github.com/emergentmethods/asknews-cli/commit/ae33f5c290ad3e91a40ae29f2ca3269cee60b635))
+
 ## [0.3.0](https://github.com/emergentmethods/asknews-cli/compare/v0.2.5...v0.3.0) (2026-09-23)
 
 
