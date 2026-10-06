@@ -284,6 +284,51 @@ describe("command actions", () => {
     expect(requestBody).not.toHaveProperty("stream");
   });
 
+  test.each([
+    "claude-sonnet-5-5",
+    "gpt-6.1-sol",
+    "claude-opus-5-5",
+    "gpt-6-sol",
+    "kimi-k3",
+  ])("forwards model %s unchanged through curated and generated research", async (model) => {
+    const requests: { url: string; body: unknown }[] = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+        requests.push({ url: String(input), body: JSON.parse(String(init?.body)) });
+        return new Response('{"ok":true}', {
+          headers: { "content-type": "application/json" },
+        });
+      }),
+    );
+
+    for (const args of [
+      ["research", "energy"],
+      ["api", "chat", "deep-news", "--messages", '[{"role":"user","content":"energy"}]'],
+    ]) {
+      await buildCli().parseAsync([
+        "node",
+        "asknews",
+        ...args,
+        "--model",
+        model,
+        "--api-key",
+        "ank_test",
+        "--api-url",
+        "https://api.example/v1",
+        "--output",
+        "json",
+      ]);
+    }
+
+    expect(requests).toEqual(
+      Array.from({ length: 2 }, () => ({
+        url: "https://api.example/v1/chat/deepnews",
+        body: { messages: [{ role: "user", content: "energy" }], model },
+      })),
+    );
+  });
+
   test("streams research by default when the output format supports it", async () => {
     let requestBody: Record<string, unknown> | undefined;
     vi.stubGlobal(

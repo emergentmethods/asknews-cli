@@ -1,6 +1,6 @@
 # api wiki
 
-Generated from AskNews API 0.32.1.
+Generated from AskNews API 0.32.3.
 
 ## Operations
 

@@ -1,6 +1,7 @@
 import type { Command } from "commander";
 import { describe, expect, test } from "vitest";
 import { buildCli } from "../../src/cli.js";
+import schema from "../../src/generated/openapi.json" with { type: "json" };
 import manifestJson from "../../src/generated/operations.json" with { type: "json" };
 import { type JsonSchema, optionName } from "../../src/lib/schema-options.js";
 import type { OperationManifest } from "../../src/lib/types.js";
@@ -146,6 +147,27 @@ describe("command help OpenAPI coverage", () => {
     expect(help).toContain("min: 1");
     expect(help).toContain("max: 190");
     expect(help).toContain("--stream [boolean]");
+  });
+
+  test("research model choices and help preserve the complete schema catalog", () => {
+    const models = schema.components.schemas.DeepNewsModel.enum;
+    expect(models).toEqual(
+      expect.arrayContaining([
+        "claude-sonnet-5-5",
+        "gpt-6.1-sol",
+        "claude-opus-5-5",
+        "gpt-6-sol",
+        "kimi-k3",
+      ]),
+    );
+    for (const path of [["research"], ["api", "chat", "deep-news"]]) {
+      const command = findCommand(buildCli(), path);
+      expect(command.options.find((option) => option.long === "--model")?.argChoices).toEqual(
+        models,
+      );
+      const help = command.helpInformation();
+      for (const model of models) expect(help).toContain(model);
+    }
   });
 
   test("every command renders help and has unique long options", () => {

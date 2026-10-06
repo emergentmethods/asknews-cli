@@ -1,6 +1,6 @@
 # CLI command reference
 
-Generated from AskNews CLI 0.2.5 and AskNews API 0.32.1.
+Generated from AskNews CLI 0.3.0 and AskNews API 0.32.3.
 
 The installed CLI is authoritative. Run `asknews <command> --help` for the exact options in
 your version. Regenerate these pages with `pnpm sync:openapi`.
