@@ -1,6 +1,5 @@
 import chalk from "chalk";
 import { Command, Option } from "commander";
-import packageJson from "../package.json" with { type: "json" };
 import { registerApiCommands } from "./commands/api.js";
 import { registerAuthCommands } from "./commands/auth.js";
 import { registerCuratedCommands } from "./commands/curated.js";
@@ -8,12 +7,13 @@ import { registerSkillCommands } from "./commands/skills.js";
 import { bannerEnabled, renderBanner } from "./lib/banner.js";
 import { manifest } from "./lib/operations.js";
 import { OUTPUT_FORMATS } from "./lib/types.js";
+import { CLI_VERSION } from "./lib/version.js";
 
 export function buildCli(): Command {
   const program = new Command()
     .name("asknews")
     .description("The official AskNews CLI for humans, automation, and agents")
-    .version(packageJson.version)
+    .version(CLI_VERSION)
     .showHelpAfterError()
     .showSuggestionAfterError()
     // Put a blank line between each argument/option/command entry so dense, multi-line parameter
