@@ -4,6 +4,7 @@ import type { CliConfig } from "./config.js";
 import { ApiError, NetworkError, UsageError } from "./errors.js";
 import { redact } from "./redact.js";
 import type { ApiResponse, OperationDefinition, RequestInput, TokenRefresher } from "./types.js";
+import { USER_AGENT } from "./version.js";
 
 // Default timeouts for operations whose normal completion time exceeds the global 60 s
 // default. Applied only when the user did not set --timeout or ASKNEWS_TIMEOUT_MS.
@@ -90,6 +91,7 @@ export async function executeRawRequest<T>(
   const headers = new Headers({
     accept: "application/json",
     authorization: `Bearer ${credential}`,
+    "user-agent": USER_AGENT,
   });
   return executeRequest<T>(
     config,
@@ -191,6 +193,7 @@ function prepareOperationRequest(
   const headers = new Headers({
     accept: input.body && isStreamBody(input.body) ? "text/event-stream" : "application/json",
     authorization: `Bearer ${credential}`,
+    "user-agent": USER_AGENT,
     ...input.headers,
   });
   let body: string | undefined;
