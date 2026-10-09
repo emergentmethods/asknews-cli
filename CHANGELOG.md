@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/emergentmethods/asknews-cli/compare/v0.3.1...v0.3.2) (2026-10-09)
+
+
+### Bug Fixes
+
+* send asknews-cli/&lt;version&gt; as User-Agent ([#13](https://github.com/emergentmethods/asknews-cli/issues/13)) ([cea1cbf](https://github.com/emergentmethods/asknews-cli/commit/cea1cbf61dae0b868e3c536d07b05b32b28ca822))
+
 ## [0.3.1](https://github.com/emergentmethods/asknews-cli/compare/v0.3.0...v0.3.1) (2026-10-06)
 
 
