@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/emergentmethods/asknews-cli/compare/v0.3.2...v0.3.3) (2026-10-31)
+
+
+### Bug Fixes
+
+* stories list takes ISO datetimes and nullable parameters keep their real type ([#15](https://github.com/emergentmethods/asknews-cli/issues/15)) ([3805ea6](https://github.com/emergentmethods/asknews-cli/commit/3805ea677e9e2d1e41b17c178d557c0609a13a84))
+
 ## [0.3.2](https://github.com/emergentmethods/asknews-cli/compare/v0.3.1...v0.3.2) (2026-10-09)
 
 
