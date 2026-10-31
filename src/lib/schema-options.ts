@@ -190,6 +190,8 @@ function registerSchemaOption(
 function parameterSchema(parameter: OperationParameter): JsonSchema {
   return {
     type: parameter.type,
+    // the name a parse error reports (`--full-articles expects true or false`)
+    title: parameter.name,
     ...(parameter.itemType ? { items: { type: parameter.itemType } } : {}),
     ...(parameter.description ? { description: parameter.description } : {}),
     ...(parameter.defaultValue !== undefined ? { default: parameter.defaultValue } : {}),

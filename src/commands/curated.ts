@@ -321,6 +321,16 @@ function registerStories(program: Command): void {
       command: Command,
     ) => {
       const parameters = readRegisteredOptions(command, listOptions);
+      for (const [bound, datetime, timestamp] of [
+        ["start", values.startDatetime, values.startTimestamp],
+        ["end", values.endDatetime, values.endTimestamp],
+      ] as const) {
+        if (datetime && timestamp) {
+          throw new UsageError(
+            `--${bound}-datetime and --${bound}-timestamp set the same bound; pass one of them`,
+          );
+        }
+      }
       if (values.startDatetime) {
         parameters.start_timestamp = toUnixSeconds(values.startDatetime, "--start-datetime");
       } else if (values.startTimestamp) {

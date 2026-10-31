@@ -55,9 +55,9 @@ asknews stories list --query "event" --start-datetime 2026-09-22T00:00:00Z --lim
 asknews stories get STORY_ID --output json
 ```
 
-1. `stories list` finds the clusters. Each item is one story with its headline, summary and the
-   latest update only (`max_updates` 1, no articles), enough to choose, not enough to report on.
-   The story id is the item's `uuid`.
+1. `stories list` finds the clusters. Each item is one story with its latest update only
+   (`updates[0].headline` and `updates[0].story`; `max_updates` 1, no articles), enough to choose,
+   not enough to report on. The story id is the item's `uuid`.
 2. `stories get <uuid>` returns the chosen story with its updates and their articles. Any question
    about how a story developed, its timeline, or its latest update is answered from `stories get`,
    never from the list alone.

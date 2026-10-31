@@ -687,6 +687,7 @@ describe("command actions", () => {
         ...common,
       ]);
     }
+    expect(urls).toHaveLength(3);
     for (const url of urls) {
       expect(url).toContain("start_timestamp=1790035200");
       expect(url).toContain("end_timestamp=1790208000");
@@ -703,6 +704,33 @@ describe("command actions", () => {
         ...common,
       ]),
     ).rejects.toThrow("--start-timestamp expects Unix seconds or an ISO 8601 datetime");
+    await expect(
+      buildCli().parseAsync([
+        "node",
+        "asknews",
+        "stories",
+        "list",
+        "--start-datetime",
+        "2026-09-22T00:00:00Z",
+        "--start-timestamp",
+        "1790035200",
+        ...common,
+      ]),
+    ).rejects.toThrow("--start-datetime and --start-timestamp set the same bound");
+    await expect(
+      buildCli().parseAsync([
+        "node",
+        "asknews",
+        "api",
+        "wiki",
+        "search-wiki",
+        "--query",
+        "Paris",
+        "--full-articles",
+        "maybe",
+        ...common,
+      ]),
+    ).rejects.toThrow("--full-articles expects true or false");
   });
 
   test("installs the project-local agent skill through the command", async () => {
