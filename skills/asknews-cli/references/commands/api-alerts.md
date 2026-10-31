@@ -64,7 +64,7 @@ Get an alert.
 | Option | Description |
 | --- | --- |
 | `--alert-id` | The alert ID Location: path. Type: string. Required. Format: uuid. |
-| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. |
+| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. Format: uuid. |
 
 ### `asknews api alerts get-alert-logs`
 
@@ -79,12 +79,12 @@ Get alert logs.
 | Option | Description |
 | --- | --- |
 | `--alert-id` | The alert ID Location: path. Type: string. Required. Format: uuid. |
-| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. |
+| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. Format: uuid. |
 | `--page` | The page number to get Location: query. Type: integer. Optional. Default: `1`. |
 | `--per-page` | The number of items per page Location: query. Type: integer. Optional. Default: `10`. |
 | `--all` | Whether to get all the alert logs Location: query. Type: boolean. Optional. Default: `false`. |
-| `--start-timestamp` | Timestamp to start search from Location: query. Type: string. Optional. |
-| `--end-timestamp` | Timestamp to end search at Location: query. Type: string. Optional. |
+| `--start-timestamp` | Timestamp to start search from Location: query. Type: integer. Optional. |
+| `--end-timestamp` | Timestamp to end search at Location: query. Type: integer. Optional. |
 
 ### `asknews api alerts get-alerts`
 
@@ -98,7 +98,7 @@ Get all created alerts.
 
 | Option | Description |
 | --- | --- |
-| `--user-id` | The ID of the user to get alerts for Location: query. Type: string. Optional. |
+| `--user-id` | The ID of the user to get alerts for Location: query. Type: string. Optional. Format: uuid. |
 | `--page` | The page number to get Location: query. Type: integer. Optional. Default: `1`. |
 | `--per-page` | The number of items per page Location: query. Type: integer. Optional. Default: `10`. |
 | `--all` | Whether to get all the alerts Location: query. Type: boolean. Optional. Default: `false`. |
@@ -116,13 +116,13 @@ Get all alert logs.
 
 | Option | Description |
 | --- | --- |
-| `--alert-id` | The alert ID Location: query. Type: string. Optional. |
-| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. |
+| `--alert-id` | The alert ID Location: query. Type: string. Optional. Format: uuid. |
+| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. Format: uuid. |
 | `--page` | The page number to get Location: query. Type: integer. Optional. Default: `1`. |
 | `--per-page` | The number of items per page Location: query. Type: integer. Optional. Default: `10`. |
 | `--all` | Whether to get all the alert logs Location: query. Type: boolean. Optional. Default: `false`. |
-| `--start-timestamp` | Timestamp to start search from Location: query. Type: string. Optional. |
-| `--end-timestamp` | Timestamp to end search at Location: query. Type: string. Optional. |
+| `--start-timestamp` | Timestamp to start search from Location: query. Type: integer. Optional. |
+| `--end-timestamp` | Timestamp to end search at Location: query. Type: integer. Optional. |
 
 ### `asknews api alerts put-alert`
 
@@ -174,7 +174,7 @@ Get an alert.
 | Option | Description |
 | --- | --- |
 | `--alert-id` | The alert ID Location: path. Type: string. Required. Format: uuid. |
-| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. |
+| `--user-id` | The ID of the user to get logs for Location: query. Type: string. Optional. Format: uuid. |
 | `--is-test` | Whether this is a test run Location: query. Type: boolean. Optional. Default: `false`. |
 
 This operation requires confirmation and `--yes` in non-interactive use.

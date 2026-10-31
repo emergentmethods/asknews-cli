@@ -25,7 +25,7 @@ parameters, API errors, output formats, and mutation safeguards.
 | Need | Use |
 | --- | --- |
 | Individual current or historical articles | `asknews news search` |
-| Clustered narratives and evolving events | `asknews stories list`, then `stories get` |
+| Clustered narratives and evolving events | `asknews stories list` to find the cluster, then `stories get <uuid>` for how it developed |
 | A synthesized answer across multiple sources | `asknews research` |
 | Live web, Reddit, Wikipedia, or X (Twitter) context | `asknews web`, `asknews reddit`, `asknews wiki`, `asknews x` |
 | Existing monitoring configuration | `asknews alerts` |

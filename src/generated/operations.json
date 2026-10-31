@@ -3397,7 +3397,8 @@
           "location": "query",
           "required": false,
           "description": "The ID of the user to get logs for",
-          "type": "string"
+          "type": "string",
+          "format": "uuid"
         }
       ],
       "requestBody": null,
@@ -3425,7 +3426,8 @@
           "location": "query",
           "required": false,
           "description": "The ID of the user to get logs for",
-          "type": "string"
+          "type": "string",
+          "format": "uuid"
         },
         {
           "name": "page",
@@ -3456,14 +3458,14 @@
           "location": "query",
           "required": false,
           "description": "Timestamp to start search from",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "end_timestamp",
           "location": "query",
           "required": false,
           "description": "Timestamp to end search at",
-          "type": "string"
+          "type": "integer"
         }
       ],
       "requestBody": null,
@@ -3483,7 +3485,8 @@
           "location": "query",
           "required": false,
           "description": "The ID of the user to get alerts for",
-          "type": "string"
+          "type": "string",
+          "format": "uuid"
         },
         {
           "name": "page",
@@ -3535,14 +3538,16 @@
           "location": "query",
           "required": false,
           "description": "The alert ID",
-          "type": "string"
+          "type": "string",
+          "format": "uuid"
         },
         {
           "name": "user_id",
           "location": "query",
           "required": false,
           "description": "The ID of the user to get logs for",
-          "type": "string"
+          "type": "string",
+          "format": "uuid"
         },
         {
           "name": "page",
@@ -3573,14 +3578,14 @@
           "location": "query",
           "required": false,
           "description": "Timestamp to start search from",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "end_timestamp",
           "location": "query",
           "required": false,
           "description": "Timestamp to end search at",
-          "type": "string"
+          "type": "integer"
         }
       ],
       "requestBody": null,
@@ -6984,7 +6989,8 @@
           "location": "query",
           "required": false,
           "description": "The ID of the user to get logs for",
-          "type": "string"
+          "type": "string",
+          "format": "uuid"
         },
         {
           "name": "is_test",
@@ -7744,14 +7750,14 @@
           "location": "query",
           "required": false,
           "description": "Start date to filter by (timestamp in seconds since epoch)",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "end_date",
           "location": "query",
           "required": false,
           "description": "End date to filter by (timestamp in seconds since epoch)",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "is_publisher",
@@ -7806,14 +7812,14 @@
           "location": "query",
           "required": false,
           "description": "Start date to filter by (timestamp in seconds since epoch)",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "end_date",
           "location": "query",
           "required": false,
           "description": "End date to filter by (timestamp in seconds since epoch)",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "metric",
@@ -8254,21 +8260,24 @@
           "location": "query",
           "required": false,
           "description": "Start timestamp to filter by",
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         {
           "name": "end_datetime",
           "location": "query",
           "required": false,
           "description": "End timestamp to filter by",
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         {
           "name": "domains",
           "location": "query",
           "required": false,
           "description": "Domain or list of domains to get indexing counts for",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "sampling",
@@ -8303,21 +8312,30 @@
           "location": "query",
           "required": false,
           "description": "Categories of news to filter on",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "provocative",
           "location": "query",
           "required": false,
           "description": "Filter articles based on how provocative they are deemed based on the use of provocative language and emotional vocabulary.",
-          "type": "string"
+          "type": "string",
+          "allowedValues": [
+            "unknown",
+            "low",
+            "medium",
+            "high",
+            "all"
+          ]
         },
         {
           "name": "reporting_voice",
           "location": "query",
           "required": false,
           "description": "Type of reporting voice to filer by.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "bad_domain_url",
@@ -8331,14 +8349,15 @@
           "location": "query",
           "required": false,
           "description": "maximum allowed pagerank for returned articles",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "string_guarantee",
           "location": "query",
           "required": false,
           "description": "If defined, the search will only occur on articles that contain this string.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "string_guarantee_op",
@@ -8357,14 +8376,16 @@
           "location": "query",
           "required": false,
           "description": "If defined, the search will only occur on articles that do not contain this string.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "entity_guarantee",
           "location": "query",
           "required": false,
           "description": "Entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John']",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "entity_guarantee_op",
@@ -8383,35 +8404,44 @@
           "location": "query",
           "required": false,
           "description": "Languages to filter by. This is the two-letter 'set 1' of the ISO 639-1 standard. For example: English is 'en'.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "countries",
           "location": "query",
           "required": false,
           "description": "Source countries to filter by (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "countries_blacklist",
           "location": "query",
           "required": false,
           "description": "Source countries to blacklist from search (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to reverse_entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "continents",
           "location": "query",
           "required": false,
           "description": "Continents to filter by",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "sentiment",
           "location": "query",
           "required": false,
           "description": "Sentiment to filter news articles by.",
-          "type": "string"
+          "type": "string",
+          "allowedValues": [
+            "negative",
+            "neutral",
+            "positive"
+          ]
         }
       ],
       "requestBody": null,
@@ -8448,14 +8478,14 @@
           "location": "query",
           "required": false,
           "description": "Timestamp to start search from",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "end_timestamp",
           "location": "query",
           "required": false,
           "description": "Timestamp to end search at",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "time_filter",
@@ -8596,7 +8626,7 @@
           "location": "query",
           "required": false,
           "description": "Maximum allowed page rank for returned articles.",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "diversify_sources",
@@ -8632,7 +8662,8 @@
           "location": "query",
           "required": false,
           "description": "If defined, the search will only occur on articles that contain strings in this list.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "string_guarantee_op",
@@ -8651,21 +8682,24 @@
           "location": "query",
           "required": false,
           "description": "If defined, the search will only occur on articles that do not contain strings in this list.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "entity_guarantee",
           "location": "query",
           "required": false,
           "description": "Entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John']",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "reverse_entity_guarantee",
           "location": "query",
           "required": false,
           "description": "Reverse entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John']",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "entity_guarantee_op",
@@ -8700,35 +8734,44 @@
           "location": "query",
           "required": false,
           "description": "Languages to filter by. This is the two-letter 'set 1' of the ISO 639-1 standard. For example: English is 'en'.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "countries",
           "location": "query",
           "required": false,
           "description": "Source countries to filter by (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "countries_blacklist",
           "location": "query",
           "required": false,
           "description": "Source countries to blacklist from search (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to reverse_entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "continents",
           "location": "query",
           "required": false,
           "description": "Continents to filter by.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "sentiment",
           "location": "query",
           "required": false,
           "description": "Sentiment to filter articles by.",
-          "type": "string"
+          "type": "string",
+          "allowedValues": [
+            "negative",
+            "neutral",
+            "positive"
+          ]
         },
         {
           "name": "premium",
@@ -8743,35 +8786,44 @@
           "location": "query",
           "required": false,
           "description": "Authors to filter articles by.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "try_cache",
           "location": "query",
           "required": false,
           "description": "Enable response caching with the specified TTL. When a cached response is returned, usage is charged at 0.25x the normal rate. Valid values: '1h' (1 hour), '6h' (6 hours), '12h' (12 hours), '24h' (24 hours), '3d' (3 days), '7d' (7 days).",
-          "type": "string"
+          "type": "string",
+          "allowedValues": [
+            "1h",
+            "6h",
+            "12h",
+            "24h",
+            "3d",
+            "7d"
+          ]
         },
         {
           "name": "geo_lat",
           "location": "query",
           "required": false,
           "description": "Latitude for geo-radius filter. Must be provided together with geo_lon and geo_radius. Filters articles whose coordinates fall within the specified circle.",
-          "type": "string"
+          "type": "number"
         },
         {
           "name": "geo_lon",
           "location": "query",
           "required": false,
           "description": "Longitude for geo-radius filter. Must be provided together with geo_lat and geo_radius.",
-          "type": "string"
+          "type": "number"
         },
         {
           "name": "geo_radius",
           "location": "query",
           "required": false,
           "description": "Radius in meters for geo-radius filter. Must be provided together with geo_lat and geo_lon.",
-          "type": "string"
+          "type": "number"
         },
         {
           "name": "geo_polygon",
@@ -8951,28 +9003,39 @@
           "location": "query",
           "required": false,
           "description": "Start timestamp to filter results on.",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "end_timestamp",
           "location": "query",
           "required": false,
           "description": "End timestamp to filter results on.",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "sort_by",
           "location": "query",
           "required": false,
           "description": "Which type of sorting to perform.\npublished: Sort by published date.\ncoverage: Sort by coverage.\nsentiment: Sort by sentiment.\nrelevance: Sort by relevance of similarity score/ranking.",
-          "type": "string"
+          "type": "string",
+          "allowedValues": [
+            "published",
+            "coverage",
+            "sentiment",
+            "relevance",
+            "confidence"
+          ]
         },
         {
           "name": "sort_type",
           "location": "query",
           "required": false,
           "description": "Whether to sort results in ascending or descending order.",
-          "type": "string"
+          "type": "string",
+          "allowedValues": [
+            "asc",
+            "desc"
+          ]
         },
         {
           "name": "continent",
@@ -9202,21 +9265,23 @@
           "location": "query",
           "required": false,
           "description": "Number of hours back to allow the websearch to look. Defaults to All time",
-          "type": "string"
+          "type": "integer"
         },
         {
           "name": "start_datetime",
           "location": "query",
           "required": false,
           "description": "Earliest acceptable publication datetime for results. For v1, acts like the existing lookback filter.",
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         {
           "name": "end_datetime",
           "location": "query",
           "required": false,
           "description": "Latest acceptable publication datetime for results. ",
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         {
           "name": "engine",
@@ -9235,7 +9300,8 @@
           "location": "query",
           "required": false,
           "description": "A list of domains to search.",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "strict",
@@ -9279,23 +9345,27 @@
           "location": "query",
           "required": false,
           "description": "Number of neighbor chunks to attach and return. If 0, then no neighbor chunks will be returned. ",
-          "type": "string",
-          "defaultValue": 1
+          "type": "integer",
+          "defaultValue": 1,
+          "minimum": 0,
+          "maximum": 10
         },
         {
           "name": "n_documents",
           "location": "query",
           "required": false,
           "description": "Number of documents to return. If 0, then no documents will be returned. ",
-          "type": "string",
-          "defaultValue": 5
+          "type": "integer",
+          "defaultValue": 5,
+          "minimum": 1,
+          "maximum": 20
         },
         {
           "name": "full_articles",
           "location": "query",
           "required": false,
           "description": "If true, then full articles will be returned. If false, then only chunks and their neighbors will be returned. Beware that returning full articles increases data size which increases token usage downstream.",
-          "type": "string",
+          "type": "boolean",
           "defaultValue": false
         },
         {
@@ -9303,7 +9373,7 @@
           "location": "query",
           "required": false,
           "description": "If true, then hybrid search will be used. If false, then only vector search will be used. ",
-          "type": "string",
+          "type": "boolean",
           "defaultValue": false
         },
         {
@@ -9311,22 +9381,25 @@
           "location": "query",
           "required": false,
           "description": "List of strings that must be present in the results. If empty, then no string guarantee will be applied. ",
-          "type": "string"
+          "type": "array",
+          "itemType": "string"
         },
         {
           "name": "diversify",
           "location": "query",
           "required": false,
           "description": "Diversity factor for MMR re-ranking. 0.0 means no diversity (pure relevance), 1.0 means full diversity. ",
-          "type": "string",
-          "defaultValue": 0
+          "type": "number",
+          "defaultValue": 0,
+          "minimum": 0,
+          "maximum": 1
         },
         {
           "name": "include_main_section",
           "location": "query",
           "required": false,
           "description": "If true, then the main section of the article will be included at the start of each chunk's content. If false, then only the chunk content will be returned. Useful because the main section often contains important context. ",
-          "type": "string",
+          "type": "boolean",
           "defaultValue": false
         }
       ],

@@ -8,6 +8,36 @@ const manifest = manifestJson as OperationManifest;
 const methods = new Set(["delete", "get", "patch", "post", "put"]);
 
 describe("OpenAPI coverage contract", () => {
+  test("a nullable parameter keeps the type of its non-null variant", () => {
+    const byId = new Map(
+      manifest.operations.map((operation) => [operation.operationId, operation]),
+    );
+    const mismatches: string[] = [];
+    for (const pathItem of Object.values(schema.paths)) {
+      for (const [method, operation] of Object.entries(pathItem)) {
+        if (!methods.has(method)) continue;
+        const { operationId, parameters = [] } = operation as {
+          operationId: string;
+          parameters?: { name: string; schema?: { anyOf?: { type?: string }[] } }[];
+        };
+        const generated = byId.get(operationId);
+        if (!generated) continue;
+        for (const parameter of parameters) {
+          const variants = (parameter.schema?.anyOf ?? []).filter((v) => v.type !== "null");
+          const expected = variants.length === 1 ? variants[0]?.type : undefined;
+          if (!expected) continue;
+          const actual = generated.parameters.find((p) => p.name === parameter.name)?.type;
+          if (actual !== expected) {
+            mismatches.push(
+              `${operationId}.${parameter.name}: ${actual} (schema says ${expected})`,
+            );
+          }
+        }
+      }
+    }
+    expect(mismatches).toEqual([]);
+  });
+
   test("every public schema operation has exactly one generated command", () => {
     const schemaIds = Object.values(schema.paths).flatMap((pathItem) =>
       Object.entries(pathItem)

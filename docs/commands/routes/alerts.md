@@ -17,7 +17,7 @@ List alerts
 
 | Option | Description |
 | --- | --- |
-| `--user-id <value>` | The ID of the user to get alerts for [query, string, optional] |
+| `--user-id <value>` | The ID of the user to get alerts for [query, string, optional, format: uuid] |
 | `--page <value>` | The page number to get [query, integer, optional, default: 1] |
 | `--per-page <value>` | The number of items per page [query, integer, optional, default: 10] |
 | `--all [boolean]` | Whether to get all the alerts [query, boolean, optional, default: false] |
@@ -43,7 +43,7 @@ Get an alert
 
 | Option | Description |
 | --- | --- |
-| `--user-id <value>` | The ID of the user to get logs for [query, string, optional] |
+| `--user-id <value>` | The ID of the user to get logs for [query, string, optional, format: uuid] |
 
 ### `asknews alerts create`
 
@@ -130,7 +130,7 @@ Run an existing alert
 | Option | Description |
 | --- | --- |
 | `-y, --yes` | confirm billable alert run |
-| `--user-id <value>` | The ID of the user to get logs for [query, string, optional] |
+| `--user-id <value>` | The ID of the user to get logs for [query, string, optional, format: uuid] |
 | `--is-test [boolean]` | Whether this is a test run [query, boolean, optional, default: false] |
 
 ## Global options

@@ -119,8 +119,9 @@ function extractParameters(
   return [...(pathParameters ?? []), ...(operationParameters ?? [])]
     .filter((value): value is OpenAPIV3_1.ParameterObject => !("$ref" in value))
     .map((parameter) => {
-      const schema =
-        parameter.schema && !("$ref" in parameter.schema) ? parameter.schema : undefined;
+      const schema = effectiveSchema(
+        parameter.schema && !("$ref" in parameter.schema) ? parameter.schema : undefined,
+      );
       return {
         name: parameter.name,
         location: parameter.in as OperationParameter["location"],
@@ -130,7 +131,9 @@ function extractParameters(
         ...(schema?.type === "array" && schema.items && !Array.isArray(schema.items)
           ? {
               itemType: normalizeType(
-                "$ref" in schema.items ? undefined : (schema.items as OpenAPIV3_1.SchemaObject),
+                effectiveSchema(
+                  "$ref" in schema.items ? undefined : (schema.items as OpenAPIV3_1.SchemaObject),
+                ),
               ) as Exclude<OperationParameter["itemType"], undefined>,
             }
           : {}),
@@ -213,6 +216,25 @@ function resolveLocalRef(
     current = (current as Record<string, unknown>)[segment];
   }
   return current as OpenAPIV3_1.ReferenceObject | OpenAPIV3_1.SchemaObject | undefined;
+}
+
+/**
+ * A nullable parameter is published as `anyOf: [{type: X, ...}, {type: "null"}]` with no top-level
+ * `type`. Collapsing that to `string` mislabels integers, numbers, booleans and arrays in the help
+ * and skips their parsing, so the one non-null variant is the schema the manifest describes; its
+ * sibling keywords (default, description) stay in force.
+ */
+function effectiveSchema(
+  schema: OpenAPIV3_1.SchemaObject | undefined,
+): OpenAPIV3_1.SchemaObject | undefined {
+  if (!schema || schema.type) return schema;
+  const variants = (schema.anyOf ?? schema.oneOf ?? []).filter(
+    (variant): variant is OpenAPIV3_1.SchemaObject =>
+      !("$ref" in variant) && variant.type !== "null",
+  );
+  if (variants.length !== 1) return schema;
+  const { anyOf: _anyOf, oneOf: _oneOf, ...rest } = schema;
+  return { ...variants[0], ...rest } as OpenAPIV3_1.SchemaObject;
 }
 
 function normalizeType(schema: OpenAPIV3_1.SchemaObject | undefined): OperationParameter["type"] {
