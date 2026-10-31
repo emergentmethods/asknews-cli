@@ -19,13 +19,15 @@ List or search stories
 | --- | --- |
 | `-q, --query <query>` | story search query |
 | `-n, --limit <number>` | number of stories Default: `"10"`. |
-| `--hours-back <hours>` | convenience alias for --start-timestamp |
+| `--hours-back <hours>` | only stories updated in the last N hours (sets the start bound) |
+| `--start-datetime <iso>` | Start of the story time bound as an ISO 8601 datetime, e.g. '2026-01-01T00:00:00Z'. |
+| `--start-timestamp <value>` | Start of the story time bound as Unix seconds (an ISO 8601 datetime is also accepted). [query, integer, optional] |
+| `--end-datetime <iso>` | End of the story time bound as an ISO 8601 datetime, e.g. '2026-01-01T00:00:00Z'. |
+| `--end-timestamp <value>` | End of the story time bound as Unix seconds (an ISO 8601 datetime is also accepted). [query, integer, optional] |
 | `--categories <value>` | Categories to use for filtering the stories search [query, array<string>, optional, default: []] |
 | `--uuids <value>` | A list of UUIDs to retrieve. [query, array<string>, optional, default: []] |
-| `--start-timestamp <value>` | Start timestamp to filter results on. [query, string, optional] |
-| `--end-timestamp <value>` | End timestamp to filter results on. [query, string, optional] |
-| `--sort-by <value>` | Which type of sorting to perform. published: Sort by published date. coverage: Sort by coverage. sentiment: Sort by sentiment. relevance: Sort by relevance of similarity score/ranking. [query, string, optional] |
-| `--sort-type <value>` | Whether to sort results in ascending or descending order. [query, string, optional] |
+| `--sort-by <value>` | Which type of sorting to perform. published: Sort by published date. coverage: Sort by coverage. sentiment: Sort by sentiment. relevance: Sort by relevance of similarity score/ranking. [query, string, optional] Choices: published, coverage, sentiment, relevance, confidence. |
+| `--sort-type <value>` | Whether to sort results in ascending or descending order. [query, string, optional] Choices: asc, desc. |
 | `--continent <value>` | Continents to filter by. [query, string, optional] |
 | `--offset <value>` | Offset to use [query, string, optional, default: 0] |
 | `--expand-updates [boolean]` | Whether to expand updates [query, boolean, optional, default: false] |

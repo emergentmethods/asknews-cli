@@ -35,10 +35,10 @@ You can see this data in action, and filter it similarly at
 | `--query` | Query to be used for the search. If method='nl', then this will beused as a natural language query. If method='kw', then this willbe used as a direct keyword query. Location: query. Type: string. Optional. |
 | `--categories` | Categories to use for filtering the stories search Location: query. Type: array<string>. Optional. Default: `[]`. |
 | `--uuids` | A list of UUIDs to retrieve. Location: query. Type: array<string>. Optional. Default: `[]`. |
-| `--start-timestamp` | Start timestamp to filter results on. Location: query. Type: string. Optional. |
-| `--end-timestamp` | End timestamp to filter results on. Location: query. Type: string. Optional. |
-| `--sort-by` | Which type of sorting to perform. published: Sort by published date. coverage: Sort by coverage. sentiment: Sort by sentiment. relevance: Sort by relevance of similarity score/ranking. Location: query. Type: string. Optional. |
-| `--sort-type` | Whether to sort results in ascending or descending order. Location: query. Type: string. Optional. |
+| `--start-timestamp` | Start timestamp to filter results on. Location: query. Type: integer. Optional. |
+| `--end-timestamp` | End timestamp to filter results on. Location: query. Type: integer. Optional. |
+| `--sort-by` | Which type of sorting to perform. published: Sort by published date. coverage: Sort by coverage. sentiment: Sort by sentiment. relevance: Sort by relevance of similarity score/ranking. Location: query. Type: string. Optional. Choices: published, coverage, sentiment, relevance, confidence. |
+| `--sort-type` | Whether to sort results in ascending or descending order. Location: query. Type: string. Optional. Choices: asc, desc. |
 | `--continent` | Continents to filter by. Location: query. Type: string. Optional. |
 | `--offset` | Offset to use Location: query. Type: string. Optional. Default: `0`. |
 | `--limit` | Limit to use Location: query. Type: integer. Optional. Default: `10`. |

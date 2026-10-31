@@ -651,6 +651,60 @@ describe("command actions", () => {
     expect(requestUrl).toContain("max_articles=0");
   });
 
+  test("stories list sends its time bounds as Unix seconds whichever form was typed", async () => {
+    const urls: string[] = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: string | URL | Request) => {
+        urls.push(String(input));
+        return new Response('{"stories":[]}', {
+          headers: { "content-type": "application/json" },
+        });
+      }),
+    );
+    const common = [
+      "--api-key",
+      "ank_test",
+      "--api-url",
+      "https://api.example/v1",
+      "--output",
+      "json",
+    ];
+    const variants = [
+      ["--start-datetime", "2026-09-22T00:00:00Z", "--end-datetime", "2026-09-24T00:00:00Z"],
+      ["--start-timestamp", "2026-09-22T00:00:00Z", "--end-timestamp", "2026-09-24T00:00:00Z"],
+      ["--start-timestamp", "1790035200", "--end-timestamp", "1790208000"],
+    ];
+    for (const bounds of variants) {
+      await buildCli().parseAsync([
+        "node",
+        "asknews",
+        "stories",
+        "list",
+        "-q",
+        "UNGA",
+        ...bounds,
+        ...common,
+      ]);
+    }
+    for (const url of urls) {
+      expect(url).toContain("start_timestamp=1790035200");
+      expect(url).toContain("end_timestamp=1790208000");
+    }
+
+    await expect(
+      buildCli().parseAsync([
+        "node",
+        "asknews",
+        "stories",
+        "list",
+        "--start-timestamp",
+        "yesterday",
+        ...common,
+      ]),
+    ).rejects.toThrow("--start-timestamp expects Unix seconds or an ISO 8601 datetime");
+  });
+
   test("installs the project-local agent skill through the command", async () => {
     const project = await mkdtemp(join(tmpdir(), "asknews-project-skill-"));
     await buildCli().parseAsync([

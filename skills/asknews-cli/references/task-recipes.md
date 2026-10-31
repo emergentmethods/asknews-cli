@@ -48,16 +48,25 @@ When answering from articles:
 
 ## Stories and event tracking
 
-Use stories for event-level context:
+Use stories for event-level context. It is a two-step surface:
 
 ```bash
-asknews stories list --query "event" --limit 5 --output json
+asknews stories list --query "event" --start-datetime 2026-09-22T00:00:00Z --limit 5 --output json
 asknews stories get STORY_ID --output json
 ```
 
-Start from the list, choose the relevant story by title/summary/date, then fetch details only when
-updates or underlying context are needed. Use `--sort-by relevance` for a query and time/coverage
-sorting for broad monitoring. Confirm sort values with `asknews stories list --help`.
+1. `stories list` finds the clusters. Each item is one story with its headline, summary and the
+   latest update only (`max_updates` 1, no articles), enough to choose, not enough to report on.
+   The story id is the item's `uuid`.
+2. `stories get <uuid>` returns the chosen story with its updates and their articles. Any question
+   about how a story developed, its timeline, or its latest update is answered from `stories get`,
+   never from the list alone.
+
+Time bounds on `stories list`: `--hours-back N` for a lookback, or `--start-datetime` /
+`--end-datetime` with an ISO 8601 datetime. `--start-timestamp` / `--end-timestamp` are the API's
+own names and take Unix seconds (an ISO datetime is accepted there too). Use `--sort-by relevance`
+for a query and time/coverage sorting for broad monitoring. Confirm sort values with
+`asknews stories list --help`.
 
 Do not confuse a story update timestamp with the publication time of every underlying article.
 

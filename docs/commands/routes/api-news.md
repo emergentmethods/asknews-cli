@@ -51,26 +51,26 @@ show the number of articles indexed per source.
 
 | Option | Description |
 | --- | --- |
-| `--start-datetime` | Start timestamp to filter by Location: query. Type: string. Optional. |
-| `--end-datetime` | End timestamp to filter by Location: query. Type: string. Optional. |
-| `--domains` | Domain or list of domains to get indexing counts for Location: query. Type: string. Optional. |
+| `--start-datetime` | Start timestamp to filter by Location: query. Type: string. Optional. Format: date-time. |
+| `--end-datetime` | End timestamp to filter by Location: query. Type: string. Optional. Format: date-time. |
+| `--domains` | Domain or list of domains to get indexing counts for Location: query. Type: array<string>. Optional. |
 | `--sampling` | Sampling to use Location: query. Type: string. Optional. Choices: 5m, 1h, 12h, 1d, 1w, 1m. Default: `"1d"`. |
 | `--time-filter` | Control which date type to filter on. 'crawl_date' is the date the article was crawled, 'pub_date' is the date the article was published. Location: query. Type: string. Optional. Choices: crawl_date, pub_date. Default: `"pub_date"`. |
-| `--categories` | Categories of news to filter on Location: query. Type: string. Optional. |
-| `--provocative` | Filter articles based on how provocative they are deemed based on the use of provocative language and emotional vocabulary. Location: query. Type: string. Optional. |
-| `--reporting-voice` | Type of reporting voice to filer by. Location: query. Type: string. Optional. |
+| `--categories` | Categories of news to filter on Location: query. Type: array<string>. Optional. |
+| `--provocative` | Filter articles based on how provocative they are deemed based on the use of provocative language and emotional vocabulary. Location: query. Type: string. Optional. Choices: unknown, low, medium, high, all. |
+| `--reporting-voice` | Type of reporting voice to filer by. Location: query. Type: array<string>. Optional. |
 | `--bad-domain-url` | blacklist of domains that must be excluded from resultsThis can be a single domain url or a list of domain urls. Location: query. Type: string. Optional. |
-| `--page-rank` | maximum allowed pagerank for returned articles Location: query. Type: string. Optional. |
-| `--string-guarantee` | If defined, the search will only occur on articles that contain this string. Location: query. Type: string. Optional. |
+| `--page-rank` | maximum allowed pagerank for returned articles Location: query. Type: integer. Optional. |
+| `--string-guarantee` | If defined, the search will only occur on articles that contain this string. Location: query. Type: array<string>. Optional. |
 | `--string-guarantee-op` | Operator to use for string guarantee. Location: query. Type: string. Optional. Choices: AND, OR. Default: `"AND"`. |
-| `--reverse-string-guarantee` | If defined, the search will only occur on articles that do not contain this string. Location: query. Type: string. Optional. |
-| `--entity-guarantee` | Entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John'] Location: query. Type: string. Optional. |
+| `--reverse-string-guarantee` | If defined, the search will only occur on articles that do not contain this string. Location: query. Type: array<string>. Optional. |
+| `--entity-guarantee` | Entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John'] Location: query. Type: array<string>. Optional. |
 | `--entity-guarantee-op` | Operator to use for entity guarantee. Location: query. Type: string. Optional. Choices: AND, OR. Default: `"OR"`. |
-| `--languages` | Languages to filter by. This is the two-letter 'set 1' of the ISO 639-1 standard. For example: English is 'en'. Location: query. Type: string. Optional. |
-| `--countries` | Source countries to filter by (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: string. Optional. |
-| `--countries-blacklist` | Source countries to blacklist from search (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to reverse_entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: string. Optional. |
-| `--continents` | Continents to filter by Location: query. Type: string. Optional. |
-| `--sentiment` | Sentiment to filter news articles by. Location: query. Type: string. Optional. |
+| `--languages` | Languages to filter by. This is the two-letter 'set 1' of the ISO 639-1 standard. For example: English is 'en'. Location: query. Type: array<string>. Optional. |
+| `--countries` | Source countries to filter by (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: array<string>. Optional. |
+| `--countries-blacklist` | Source countries to blacklist from search (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to reverse_entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: array<string>. Optional. |
+| `--continents` | Continents to filter by Location: query. Type: array<string>. Optional. |
+| `--sentiment` | Sentiment to filter news articles by. Location: query. Type: string. Optional. Choices: negative, neutral, positive. |
 
 ### `asknews api news search-news`
 
@@ -99,8 +99,8 @@ An example of this data in action can be found and interacted with at `https://a
 | --- | --- |
 | `--query` | Query string that can be any phrase, keyword, question, or paragraph. If method='nl', then this will be used as a natural language query. If method='kw', then this will be used as a direct keyword query. This is not required, if it is not passed, then the search is based on the remaining filters only. Location: query. Type: string. Optional. Default: `""`. |
 | `--n-articles` | Number of articles to return Location: query. Type: integer. Optional. Default: `10`. Maximum: 101. |
-| `--start-timestamp` | Timestamp to start search from Location: query. Type: string. Optional. |
-| `--end-timestamp` | Timestamp to end search at Location: query. Type: string. Optional. |
+| `--start-timestamp` | Timestamp to start search from Location: query. Type: integer. Optional. |
+| `--end-timestamp` | Timestamp to end search at Location: query. Type: integer. Optional. |
 | `--time-filter` | Control which date type to filter on. 'crawl_date' is the date the article was crawled, 'pub_date' is the date the article was published. Location: query. Type: string. Optional. Choices: crawl_date, pub_date. Default: `"crawl_date"`. |
 | `--return-type` | Type of return value. 'string' means that the return is prompt-optimized and ready to be immediately injected into any prompt. 'dicts' means that the return is a structured dictionary, containing additional metadata (like a classic news api). Can be 'string' or 'dicts', or 'both'. 'string' guarantees the lowest-latency response 'dicts' requires more I/O, therefore increases latency (very slightly, depending on your network connection). Location: query. Type: string. Optional. Choices: string, dicts, both. Default: `"dicts"`. |
 | `--historical` | Search on archive of historical news. Defaults to False, meaning that the search will only look through the most recent news (48 hours) Location: query. Type: boolean. Optional. Default: `false`. |
@@ -115,29 +115,29 @@ An example of this data in action can be found and interacted with at `https://a
 | `--domain-url` | filter by domain url of interest. This can be a single domain or a list of domains. For example, 'npr.org' or ['nature.com', 'npr.org'] Location: query. Type: string. Optional. |
 | `--bad-domain-url` | blacklist of domains that must be excluded from resultsThis can be a single domain url or a list of domain urls. Location: query. Type: string. Optional. |
 | `--podcasts` | Control whether podcasts are included in search results. 'include' searches news and podcasts, 'only' searches podcasts only, and 'none' excludes podcasts. Location: query. Type: string. Optional. Choices: include, only, none. Default: `"include"`. |
-| `--page-rank` | Maximum allowed page rank for returned articles. Location: query. Type: string. Optional. |
+| `--page-rank` | Maximum allowed page rank for returned articles. Location: query. Type: integer. Optional. |
 | `--diversify-sources` | Ensure that the return set of articles are selected from diverse sources. This adds latency to the search, but attempts to balance the representation of sources by country and source origins. In summary, a net is cast around your search, then the diversity of sources is analyzed, and your final result matches the large net diversity distribution. This means that your search accuracy is reduced, but you gain more diverse perspectives. Location: query. Type: boolean. Optional. Default: `false`. |
 | `--strategy` | Strategy to use for searching. 'latest news' automatically setsmethod='nl', historical=False, and looks within the past 24 hours. 'news knowledge' automatically sets method='kw', historical=True, and looks within the past 60 days. 'news knowledge' will increase latency due to the larger search space in the archive. Use 'default' if you want to control start_timestamp, end_timestamp, historical, and method. Location: query. Type: string. Optional. Choices: latest news, news knowledge, default. Default: `"default"`. |
 | `--hours-back` | Can be set to easily control the look back on the search. This is the same as controlling the 'start_timestamp' parameter. The difference is that this is not a timestamp, it is the number of hours back to look from the current time. Defaults to 24 hours. Location: query. Type: integer. Optional. Default: `24`. |
-| `--string-guarantee` | If defined, the search will only occur on articles that contain strings in this list. Location: query. Type: string. Optional. |
+| `--string-guarantee` | If defined, the search will only occur on articles that contain strings in this list. Location: query. Type: array<string>. Optional. |
 | `--string-guarantee-op` | Operator to use for string guarantee list. Location: query. Type: string. Optional. Choices: AND, OR. Default: `"AND"`. |
-| `--reverse-string-guarantee` | If defined, the search will only occur on articles that do not contain strings in this list. Location: query. Type: string. Optional. |
-| `--entity-guarantee` | Entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John'] Location: query. Type: string. Optional. |
-| `--reverse-entity-guarantee` | Reverse entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John'] Location: query. Type: string. Optional. |
+| `--reverse-string-guarantee` | If defined, the search will only occur on articles that do not contain strings in this list. Location: query. Type: array<string>. Optional. |
+| `--entity-guarantee` | Entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John'] Location: query. Type: array<string>. Optional. |
+| `--reverse-entity-guarantee` | Reverse entity guarantee to filter by. This is a list of strings, where each string includes entity type and entity value separated by a colon. The first element is the entity type and the second element is the entity value. For example ['Location:Paris', 'Person:John'] Location: query. Type: array<string>. Optional. |
 | `--entity-guarantee-op` | Operator to use for entity guarantee list. Location: query. Type: string. Optional. Choices: AND, OR. Default: `"OR"`. |
 | `--return-graphs` | Return graphs for the articles. Only available to Analyst tier and above. Location: query. Type: boolean. Optional. Default: `false`. |
 | `--return-geo` | Return GeoCoordinates associated with locations discussed inside the articles. Only available to Analyst tier and above. Location: query. Type: boolean. Optional. Default: `false`. |
-| `--languages` | Languages to filter by. This is the two-letter 'set 1' of the ISO 639-1 standard. For example: English is 'en'. Location: query. Type: string. Optional. |
-| `--countries` | Source countries to filter by (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: string. Optional. |
-| `--countries-blacklist` | Source countries to blacklist from search (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to reverse_entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: string. Optional. |
-| `--continents` | Continents to filter by. Location: query. Type: string. Optional. |
-| `--sentiment` | Sentiment to filter articles by. Location: query. Type: string. Optional. |
+| `--languages` | Languages to filter by. This is the two-letter 'set 1' of the ISO 639-1 standard. For example: English is 'en'. Location: query. Type: array<string>. Optional. |
+| `--countries` | Source countries to filter by (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: array<string>. Optional. |
+| `--countries-blacklist` | Source countries to blacklist from search (this is only for the publisher location, not the locations mentioned in articles. For Locations mentioned in articles, refer to reverse_entity_guarantee), countries must be the two-letter ISO country codeFor example: United States is 'US', France is 'FR', Sweden is 'SE'. Location: query. Type: array<string>. Optional. |
+| `--continents` | Continents to filter by. Location: query. Type: array<string>. Optional. |
+| `--sentiment` | Sentiment to filter articles by. Location: query. Type: string. Optional. Choices: negative, neutral, positive. |
 | `--premium` | Include premium sources. Location: query. Type: boolean. Optional. Default: `false`. |
-| `--authors` | Authors to filter articles by. Location: query. Type: string. Optional. |
-| `--try-cache` | Enable response caching with the specified TTL. When a cached response is returned, usage is charged at 0.25x the normal rate. Valid values: '1h' (1 hour), '6h' (6 hours), '12h' (12 hours), '24h' (24 hours), '3d' (3 days), '7d' (7 days). Location: query. Type: string. Optional. |
-| `--geo-lat` | Latitude for geo-radius filter. Must be provided together with geo_lon and geo_radius. Filters articles whose coordinates fall within the specified circle. Location: query. Type: string. Optional. |
-| `--geo-lon` | Longitude for geo-radius filter. Must be provided together with geo_lat and geo_radius. Location: query. Type: string. Optional. |
-| `--geo-radius` | Radius in meters for geo-radius filter. Must be provided together with geo_lat and geo_lon. Location: query. Type: string. Optional. |
+| `--authors` | Authors to filter articles by. Location: query. Type: array<string>. Optional. |
+| `--try-cache` | Enable response caching with the specified TTL. When a cached response is returned, usage is charged at 0.25x the normal rate. Valid values: '1h' (1 hour), '6h' (6 hours), '12h' (12 hours), '24h' (24 hours), '3d' (3 days), '7d' (7 days). Location: query. Type: string. Optional. Choices: 1h, 6h, 12h, 24h, 3d, 7d. |
+| `--geo-lat` | Latitude for geo-radius filter. Must be provided together with geo_lon and geo_radius. Filters articles whose coordinates fall within the specified circle. Location: query. Type: number. Optional. |
+| `--geo-lon` | Longitude for geo-radius filter. Must be provided together with geo_lat and geo_radius. Location: query. Type: number. Optional. |
+| `--geo-radius` | Radius in meters for geo-radius filter. Must be provided together with geo_lat and geo_lon. Location: query. Type: number. Optional. |
 | `--geo-polygon` | JSON string defining a polygon for geo filtering. Must contain an 'exterior' key with a list of {lon, lat} points. The first and last point must be the same. Optionally include 'interiors' as a list of rings (each a list of {lon, lat} points) to exclude areas. Example: {"exterior": [{"lon": -70, "lat": -70}, {"lon": 60, "lat": -70}, {"lon": 60, "lat": 60}, {"lon": -70, "lat": 60}, {"lon": -70, "lat": -70}]} Location: query. Type: string. Optional. |
 
 ## Global options

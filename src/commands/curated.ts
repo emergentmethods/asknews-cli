@@ -276,16 +276,64 @@ function registerStories(program: Command): void {
     .description("List or search stories")
     .option("-q, --query <query>", "story search query")
     .option("-n, --limit <number>", "number of stories", "10")
-    .option("--hours-back <hours>", "convenience alias for --start-timestamp");
+    .option(
+      "--hours-back <hours>",
+      "only stories updated in the last N hours (sets the start bound)",
+    );
+  // The time bounds take an ISO 8601 datetime as well as Unix seconds: `--start-datetime` and
+  // `--end-datetime` mirror `news search` and `x`, and `--start-timestamp`/`--end-timestamp` keep
+  // the API's names but accept either form, so a datetime never reaches the API as a string.
+  for (const [name, bound] of [
+    ["start", "Start"],
+    ["end", "End"],
+  ] as const) {
+    list
+      .addOption(
+        new Option(
+          `--${name}-datetime <iso>`,
+          `${bound} of the story time bound as an ISO 8601 datetime, e.g. '2026-01-01T00:00:00Z'.`,
+        ).helpGroup("API options:"),
+      )
+      .addOption(
+        new Option(
+          `--${name}-timestamp <value>`,
+          `${bound} of the story time bound as Unix seconds (an ISO 8601 datetime is also accepted). [query, integer, optional]`,
+        ).helpGroup("API options:"),
+      );
+  }
   const listOptions = registerParameterOptions(
     list,
     getOperation("get_stories"),
-    new Set(["query", "limit"]),
+    new Set(["query", "limit", "start_timestamp", "end_timestamp"]),
   );
   addUnderlyingHelp(list, "get_stories");
   list.action(
-    async (values: { query?: string; limit: string; hoursBack?: string }, command: Command) => {
+    async (
+      values: {
+        query?: string;
+        limit: string;
+        hoursBack?: string;
+        startDatetime?: string;
+        endDatetime?: string;
+        startTimestamp?: string;
+        endTimestamp?: string;
+      },
+      command: Command,
+    ) => {
       const parameters = readRegisteredOptions(command, listOptions);
+      if (values.startDatetime) {
+        parameters.start_timestamp = toUnixSeconds(values.startDatetime, "--start-datetime");
+      } else if (values.startTimestamp) {
+        parameters.start_timestamp = toUnixSecondsOrInteger(
+          values.startTimestamp,
+          "--start-timestamp",
+        );
+      }
+      if (values.endDatetime) {
+        parameters.end_timestamp = toUnixSeconds(values.endDatetime, "--end-datetime");
+      } else if (values.endTimestamp) {
+        parameters.end_timestamp = toUnixSecondsOrInteger(values.endTimestamp, "--end-timestamp");
+      }
       if (values.hoursBack && parameters.start_timestamp === undefined) {
         parameters.start_timestamp =
           Math.floor(Date.now() / 1000) - Number(values.hoursBack) * 60 * 60;
@@ -628,6 +676,17 @@ function toUnixSeconds(value: string, flag: string): number {
   const ms = Date.parse(value);
   if (Number.isNaN(ms)) {
     throw new UsageError(`${flag} expects an ISO 8601 datetime, e.g. 2026-01-01T00:00:00Z`);
+  }
+  return Math.floor(ms / 1000);
+}
+
+function toUnixSecondsOrInteger(value: string, flag: string): number {
+  if (/^\d+$/.test(value.trim())) return Number(value);
+  const ms = Date.parse(value);
+  if (Number.isNaN(ms)) {
+    throw new UsageError(
+      `${flag} expects Unix seconds or an ISO 8601 datetime, e.g. 1767225600 or 2026-01-01T00:00:00Z`,
+    );
   }
   return Math.floor(ms / 1000);
 }
